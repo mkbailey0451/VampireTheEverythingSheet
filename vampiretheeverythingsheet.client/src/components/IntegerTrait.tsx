@@ -1,42 +1,39 @@
-import { KeyboardEvent, MouseEvent, ReactNode } from 'react';
-import { useId } from 'react';
+import { KeyboardEvent, MouseEvent, ReactNode, ReactElement } from 'react';
+import { useId, useState } from 'react';
 
-//IntegerTrait renders a dot-based Trait, such as an Attribute or an Ability.
-
-export interface IntegerTraitData {
+export interface IntegerTraitProps {
     name: string;
-    value: number;
+    initialValue?: number;
     minValue: number;
-    maxValue: number; //TODO: Not sure if this is for the front or back end
+    maxValue: number;
 }
 
-
-var DotClicked: (event: MouseEvent) => boolean;
-
 //Renders a single dot in the Trait.
-function Dot(dotIndex: number, filled: boolean) {
+function Dot(dotIndex: number, filled: boolean, onDotClicked: (event: MouseEvent) => boolean): ReactElement {
     
     return (
-        <div onClick={DotClicked} data-index={dotIndex} data-filled={filled} key={dotIndex}>
+        <span onClick={onDotClicked} data-index={dotIndex} data-filled={filled} key={dotIndex}>
             {
                 filled
                     ? "\u2B24"
                     : "\u25EF"
             }
-        </div>
+        </span>
     );
 }
 
 var KeyDownHandler: (event: KeyboardEvent) => boolean;
 
-export function IntegerTrait(data: IntegerTraitData) {
+export function IntegerTrait({ name, initialValue, minValue, maxValue }: IntegerTraitProps): ReactElement {
     const valueID = useId();
+
+    const [value, setValue] = useState(initialValue || minValue);
     
     //we maintain a separate reference to this in the main class so we can easily handle updates
     var dots: ReactNode[] = [];
     
-    //this needs to be in scope for the closure to access the data it needs, but we can avoid redefining it by memoizing its value
-    DotClicked = DotClicked || function DotClicked(event: MouseEvent): boolean {
+    //this needs to be in scope for the closure to access the data it needs, but we can pass it to Dot later
+    const DotClicked = function DotClicked(event: MouseEvent): boolean {
         event.preventDefault();
         event.stopPropagation();
 
@@ -53,7 +50,7 @@ export function IntegerTrait(data: IntegerTraitData) {
             }
             else if (index === 0) {
                 //if the first dot is filled and clicked, and there are other filled dots, reduce value to 1
-                if (dots.length > 1 && data.value > 1) {
+                if (dots.length > 1 && value > 1) {
                     desiredValue = 1;
                 }
                 //otherwise, unfill it
@@ -63,7 +60,7 @@ export function IntegerTrait(data: IntegerTraitData) {
             }
             else {
                 //if there are filled dots past this one, unfill them but leave this one filled
-                if (data.value > index + 1) {
+                if (value > index + 1) {
                     desiredValue = index + 1;
                 }
                 //otherwise, unfill this one
@@ -78,16 +75,18 @@ export function IntegerTrait(data: IntegerTraitData) {
         }
 
         //bounds checks
-        if (desiredValue < data.minValue) {
-            desiredValue = data.minValue;
+        if (desiredValue < minValue) {
+            desiredValue = minValue;
         }
-        if (desiredValue > data.maxValue) {
-            desiredValue = data.maxValue;
+        if (desiredValue > maxValue) {
+            desiredValue = maxValue;
         }
 
-        data.value = desiredValue;
+        //console.log("Current value: " + value + "\nNew value: " + desiredValue);
 
-        //TODO: update state - may be able to optimize by only rerendering dots
+        setValue(desiredValue);
+
+        //TODO: may be able to optimize by only rerendering dots, but how? Does React do this already?
 
         return false;
     }
@@ -96,10 +95,10 @@ export function IntegerTrait(data: IntegerTraitData) {
     //this needs to be in scope for the closure to access the data it needs, but we can avoid redefining it by memoizing its value
     KeyDownHandler = KeyDownHandler || function KeyDownHandler(event: KeyboardEvent): boolean {
         if (event.key === "+") {
-            data.value++;
+            setValue(value + 1);
         }
         else if (event.key === "-") {
-            data.value--;
+            setValue(value - 1);
         }
         else {
             return true;
@@ -119,18 +118,18 @@ export function IntegerTrait(data: IntegerTraitData) {
         dots = [];
 
         //We could do bounds checking on this, but it's coming from the server so it's faster if we trust it
-        while (x < data.minValue) {
-            dots.push(Dot(x, true));
+        while (x < minValue) {
+            dots.push(Dot(x, true, DotClicked));
             x++;
         }
 
-        while (x < data.value) {
-            dots.push(Dot(x, true));
+        while (x < value) {
+            dots.push(Dot(x, true, DotClicked));
             x++;
         }
 
-        while (x < data.maxValue) {
-            dots.push(Dot(x, false));
+        while (x < maxValue) {
+            dots.push(Dot(x, false, DotClicked));
             x++;
         }
 
@@ -139,13 +138,13 @@ export function IntegerTrait(data: IntegerTraitData) {
 
     return (
         <div tabIndex={-1} onKeyDown={KeyDownHandler}>
-            <label htmlFor={valueID}>{data.name}: </label>
-            <div id={valueID}>
-                <div className="HiddenText">Current value is {data.value}. Press the plus key to increase the value. Press the minus key to decrease the value.</div>
-                <div role="presentation">
+            <label htmlFor={valueID}>{name}: </label>
+            <span id={valueID}>
+                <div className="HiddenText">Current value is {value}. Press the plus key to increase the value. Press the minus key to decrease the value.</div>
+                <span role="presentation">
                     {GetDots()}
-                </div>
-            </div>
+                </span>
+            </span>
         </div>
     );
 }

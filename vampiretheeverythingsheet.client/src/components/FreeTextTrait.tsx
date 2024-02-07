@@ -1,17 +1,25 @@
-import { useId } from 'react';
+import { useId, useState, FocusEvent, ChangeEvent, ReactElement } from 'react';
 
-export interface FreeTextTraitData {
+export interface FreeTextTraitProps {
     name: string;
-    value: string;
+    initialValue?: string;
 }
 
-export function FreeTextTrait(data: FreeTextTraitData) {
-    //TODO: Update state on blur
+export function FreeTextTrait({ name, initialValue = "" }: FreeTextTraitProps): ReactElement {
     const textID = useId();
+    const [ value, setValue ] = useState(initialValue);
+
     return (
         <div>
-            <label htmlFor={textID}>{data.name}: </label>
-            <input type="text" id={textID} defaultValue={data.value} />
+            <div>
+                <label htmlFor={textID}>{name}: </label>
+            </div>
+            <div>
+                <input type="text" id={textID} defaultValue={value}
+                    onBlur={(event: FocusEvent<HTMLInputElement>) => { setValue(event.target.value || ""); event.preventDefault(); event.stopPropagation(); return false; }}
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => { setValue(event.target.value || ""); event.preventDefault(); event.stopPropagation(); return false; } }
+                />
+            </div>
         </div>
     );
 }
