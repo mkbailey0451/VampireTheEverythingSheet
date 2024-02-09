@@ -1,8 +1,9 @@
 import { KeyboardEvent, MouseEvent, ReactNode, ReactElement } from 'react';
 import { useId, useState } from 'react';
+import { GridElement, GridElementProps } from './GridElement';
 
-export interface IntegerTraitProps {
-    name: string;
+export interface IntegerTraitProps extends GridElementProps {
+    integerTraitName: string;
     initialValue?: number;
     minValue: number;
     maxValue: number;
@@ -24,7 +25,9 @@ function Dot(dotIndex: number, filled: boolean, onDotClicked: (event: MouseEvent
 
 var KeyDownHandler: (event: KeyboardEvent) => boolean;
 
-export function IntegerTrait({ name, initialValue, minValue, maxValue }: IntegerTraitProps): ReactElement {
+export function IntegerTrait(props: IntegerTraitProps): ReactElement {
+    var { integerTraitName, initialValue, minValue, maxValue } = props;
+
     const valueID = useId();
 
     const [value, setValue] = useState(initialValue || minValue);
@@ -137,16 +140,16 @@ export function IntegerTrait({ name, initialValue, minValue, maxValue }: Integer
     }
 
     return (
-        <div tabIndex={-1} onKeyDown={KeyDownHandler}>
-            <label htmlFor={valueID}>{name}: </label>
-            <span id={valueID}>
-                <div className="HiddenText">Current value is {value}. Press the plus key to increase the value. Press the minus key to decrease the value.</div>
-                <span role="presentation">
-                    {GetDots()}
+        <GridElement {...props} >
+            <span tabIndex={-1} onKeyDown={KeyDownHandler}>
+                <label htmlFor={valueID}>{integerTraitName}: </label>
+                <span id={valueID}>
+                    <div className="HiddenText">Current value is {value}. Press the plus key to increase the value. Press the minus key to decrease the value.</div>
+                    <span role="presentation">
+                        {GetDots()}
+                    </span>
                 </span>
             </span>
-        </div>
+        </GridElement>
     );
 }
-
-//TODO: keyboard handler, generic updater

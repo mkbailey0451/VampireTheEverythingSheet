@@ -1,31 +1,30 @@
-import { ReactElement, Children } from 'react';
-import { TraitColumn } from "./TraitColumn";
+import { ReactElement, ReactNode, Children } from 'react';
+import { GridElementProps, GridElement } from './GridElements/GridElement';
+import CreateGridElement from './GridElements/CreateGridElement';
 
 //Describes a grid of traits in three columns, automatically formatted by column to minimize vertical space.
 //For example, if 11 traits are given, the columns will have 4, 4, and 3 traits respectively.
+//Uses the universal grid layout system described in CharacterSheet.tsx.
 
 interface AutoGridProps {
-    children: any;
+    traits: GridElementProps[];
     columnCount?: number;
+    startingRow?: number;
+    rowCountCallback?: (rowsConsumed: number) => void;
 }
 
-export function AutoGrid({ children, columnCount = 3 }: AutoGridProps): ReactElement {
+export function AutoGrid({ traits, columnCount = 3, startingRow = 1, rowCountCallback = undefined }: AutoGridProps): ReactElement {
 
-    //This is normally considered bad practice because controls aren't exactly supposed to manipulate their child layout, but the entire point of this class is to do just that
-    var childArray: any[] = Children.toArray(children);
-
-    var cols: ReactElement[] = [];
+    var transformedElements: ReactElement[] = [];
 
     //determine how many items will be in each column, if we allow leftovers
-    var quotient = Math.floor(childArray.length / columnCount);
+    var quotient = Math.floor(traits.length / columnCount);
     //then, determine how many leftovers there are - these go in the earliest possible columns
-    var modulus = childArray.length % columnCount;
+    var modulus = traits.length % columnCount;
 
     //distribute children in column-major order
     var childIndex = 0;
     for (let x = 0; x < columnCount; x++) {
-        //entries (or children) going in this column
-        let columnEntries: ReactElement[] = [];
 
         //max is one higher for early columns that need leftovers
         let max = quotient +
@@ -36,17 +35,31 @@ export function AutoGrid({ children, columnCount = 3 }: AutoGridProps): ReactEle
             );
                 
         for (let y = 0; y < max; y++) {
-            columnEntries.push(childArray[childIndex]);
+            let trait = traits[childIndex];
+
+            trait.row = startingRow + x;
+            trait.col = y + 1;
+            trait.width = 1;
+            trait.height = 1;
+
+            transformedElements.push(CreateGridElement(trait));
+
             childIndex++;
         }
+    }
 
-        cols.push(TraitColumn({ children: columnEntries }));
+    if (rowCountCallback) {
+        var rowsConsumed = modulus === 0
+            ? quotient
+            : quotient + 1;
+
+        rowCountCallback(rowsConsumed);
     }
     
     return (
-        <div>
-            {cols}
-        </div>
+        <>
+            {transformedElements}
+        </>
     );
 }
 

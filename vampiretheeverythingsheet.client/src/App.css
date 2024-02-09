@@ -10,3 +10,7 @@
     bottom: -9999em;
 }
 
+.gridContainer {
+    display: grid;
+    gap: 2px;
+}
