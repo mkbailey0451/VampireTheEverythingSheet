@@ -10,51 +10,51 @@ import { WeaponProps } from './GridElements/Weapon';
 
 export interface CharacterSheetProps {
     
-    topTextTraits: (FreeTextTraitProps | DropdownTraitProps)[];
+    TopTextTraits: (FreeTextTraitProps | DropdownTraitProps)[];
 
-    physicalAttributes: IntegerTraitProps[];
-    socialAttributes: IntegerTraitProps[];
-    mentalAttributes: IntegerTraitProps[];
+    PhysicalAttributes: IntegerTraitProps[];
+    SocialAttributes: IntegerTraitProps[];
+    MentalAttributes: IntegerTraitProps[];
 
-    physicalSkills: IntegerTraitProps[];
-    socialSkills: IntegerTraitProps[];
-    mentalSkills: IntegerTraitProps[];
+    PhysicalSkills: IntegerTraitProps[];
+    SocialSkills: IntegerTraitProps[];
+    MentalSkills: IntegerTraitProps[];
 
-    addPowerTraits: string[];
-    powerTraits: IntegerTraitProps[];
+    AddPowerTraits: IntegerTraitProps[];
+    PowerTraits: IntegerTraitProps[];
 
-    validSpecificPowers: Map<string, string[]>;
-    specificPowers: Map<string, string[]>;
+    ValidSpecificPowers: Map<string, string[]>;
+    SpecificPowers: Map<string, string[]>;
 
-    addBackgrounds: string[];
-    backgrounds: IntegerTraitProps[];
+    AddBackgrounds: string[];
+    Backgrounds: IntegerTraitProps[];
 
-    validMeritsFlaws: MeritFlawProps[];
-    meritsFlaws: MeritFlawProps[];
+    ValidMeritsFlaws: MeritFlawProps[];
+    MeritsFlaws: MeritFlawProps[];
 
-    path: PathProps;
+    Path: PathProps;
 
-    beliefs: string[];
+    Beliefs: string[];
 
-    validWeapons: string[];
-    weapons: WeaponProps[];
+    ValidWeapons: string[];
+    Weapons: WeaponProps[];
 
-    physicalDescriptionBits: FreeTextTraitProps[];
+    PhysicalDescriptionBits: FreeTextTraitProps[];
 
-    physicalDescription: string;
+    PhysicalDescription: string;
 
-    history: string;
+    History: string;
 
-    personality: string;
+    Personality: string;
 
-    goals: string;
+    Goals: string;
 
-    backgroundDetails: string[]; //TODO: Probably a Big Text Control of some description
+    BackgroundDetails: string[]; //TODO: Probably a Big Text Control of some description
 }
 
 //TODO: Use grid layout, passing current row between categories/grids/etc. and using the parent control as a master control for the whole thing. Hope like Hell it all actually works together.
 
-export function CharacterSheet({ topTextTraits }: CharacterSheetProps) {
+export function CharacterSheet({ TopTextTraits }: CharacterSheetProps) {
 
     AddSplat = function AddSplat(splatType: string) {
         //TODO
@@ -70,7 +70,7 @@ export function CharacterSheet({ topTextTraits }: CharacterSheetProps) {
     var rowCountCallback = (rowsConsumed: number) => { row += rowsConsumed; };
 
     elements.push(
-        <AutoGrid traits={topTextTraits} startingRow={row} rowCountCallback={ rowCountCallback } />
+        <AutoGrid traits={TopTextTraits} startingRow={row} rowCountCallback={ rowCountCallback } />
     );
 
     return (
@@ -92,7 +92,7 @@ export function DummyCharacterData(): CharacterSheetProps {
     var dummyData: CharacterSheetProps;
 
     dummyData = {
-        topTextTraits: [
+        TopTextTraits: [
             {
                 freeTextTraitName: "Name",
                 initialValue: "Big Z"
@@ -133,46 +133,46 @@ export function DummyCharacterData(): CharacterSheetProps {
             },
         ],
 
-        physicalAttributes: [],
-        socialAttributes: [],
-        mentalAttributes: [],
+        PhysicalAttributes: [],
+        SocialAttributes: [],
+        MentalAttributes: [],
 
-        physicalSkills: [],
-        socialSkills: [],
-        mentalSkills: [],
+        PhysicalSkills: [],
+        SocialSkills: [],
+        MentalSkills: [],
 
-        addPowerTraits: [],
-        powerTraits: [],
+        AddPowerTraits: [],
+        PowerTraits: [],
 
-        validSpecificPowers: new Map<string, string[]>,
-        specificPowers: new Map<string, string[]>,
+        ValidSpecificPowers: new Map<string, string[]>,
+        SpecificPowers: new Map<string, string[]>,
 
-        addBackgrounds: [],
-        backgrounds: [],
+        AddBackgrounds: [],
+        Backgrounds: [],
 
-        validMeritsFlaws: [],
-        meritsFlaws: [],
+        ValidMeritsFlaws: [],
+        MeritsFlaws: [],
 
-        path: {
+        Path: {
             pathName: ""
         },
 
-        beliefs: [],
+        Beliefs: [],
 
-        validWeapons: [],
-        weapons: [],
+        ValidWeapons: [],
+        Weapons: [],
 
-        physicalDescriptionBits: [],
+        PhysicalDescriptionBits: [],
 
-        physicalDescription: "",
+        PhysicalDescription: "",
 
-        history: "",
+        History: "",
 
-        personality: "",
+        Personality: "",
 
-        goals: "",
+        Goals: "",
 
-        backgroundDetails: []
+        BackgroundDetails: []
     };
 
 
