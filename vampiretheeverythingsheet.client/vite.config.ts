@@ -46,7 +46,7 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
+            '^/playerpersistence': {
                 target: 'https://localhost:7010/',
                 secure: false
             }

@@ -1,11 +1,23 @@
-﻿namespace VampireTheEverythingSheet.Server.Models
+﻿using System.Data;
+using static VampireTheEverythingSheet.Server.DataAccessLayer.Constants;
+
+namespace VampireTheEverythingSheet.Server.Models
 {
     public class IntegerTrait : Trait
     {
-        public IntegerTrait(Character character, int minValue, int maxValue) : base(character)
+        /// <summary>
+        /// Creates a copy of the supplied Trait but belonging to the supplied Character.
+        /// </summary>
+        public IntegerTrait(Character character, IntegerTrait trait) : base(character, trait)
         {
-            MinValue = minValue;
-            MaxValue = maxValue;
+            MinValue = trait.MinValue;
+            MaxValue = trait.MaxValue;
+            //TODO: More if we need it
+        }
+
+        public IntegerTrait(Character character, DataRow row) : base(character, row)
+        {
+            //TODO
         }
 
         private int _val;

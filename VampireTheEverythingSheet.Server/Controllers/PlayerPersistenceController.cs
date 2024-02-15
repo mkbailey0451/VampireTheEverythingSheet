@@ -1,14 +1,29 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using VampireTheEverythingSheet.Server.Models;
 
 namespace VampireTheEverythingSheet.Server.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class PlayerPersistenceController : Controller
     {
+
+        //TODO: Somehow this is at https://localhost:5173/playerpersistence or something like that
+        [HttpGet(Name = "GetCharacterData")]
+        public Character GetCharacterData()
+        {
+            string? data = SessionExtensions.GetString(HttpContext.Session, "CharacterData");
+
+            //TODO
+
+            return new Character(data ?? "");
+        }
+
         // GET: PlayerPersistenceController
         public ActionResult Index()
         {
-
+            //TODO figure out what this is doing and why
             return View();
         }
 

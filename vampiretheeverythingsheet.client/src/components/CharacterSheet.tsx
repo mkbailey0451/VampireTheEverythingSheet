@@ -54,12 +54,12 @@ export interface CharacterSheetProps {
 
 //TODO: Use grid layout, passing current row between categories/grids/etc. and using the parent control as a master control for the whole thing. Hope like Hell it all actually works together.
 
-export function CharacterSheet({ TopTextTraits }: CharacterSheetProps) {
+export function CharacterSheet(props: CharacterSheetProps) {
 
-    AddSplat = function AddSplat(splatType: string) {
+    AddSplat = function AddSplat(splatID: number) {
         //TODO
     };
-    RemoveSplat = function RemoveSplat(splatType: string) {
+    RemoveSplat = function RemoveSplat(splatID: number) {
         //TODO
     };
 
@@ -70,7 +70,7 @@ export function CharacterSheet({ TopTextTraits }: CharacterSheetProps) {
     var rowCountCallback = (rowsConsumed: number) => { row += rowsConsumed; };
 
     elements.push(
-        <AutoGrid traits={TopTextTraits} startingRow={row} rowCountCallback={ rowCountCallback } />
+        <AutoGrid traits={props.TopTextTraits} startingRow={row} rowCountCallback={ rowCountCallback } />
     );
 
     return (
@@ -86,96 +86,3 @@ var RemoveSplat: (splatType: string) => void;
 export { RemoveSplat };
 
 export default CharacterSheet;
-
-export function DummyCharacterData(): CharacterSheetProps {
-
-    var dummyData: CharacterSheetProps;
-
-    dummyData = {
-        TopTextTraits: [
-            {
-                freeTextTraitName: "Name",
-                initialValue: "Big Z"
-            },
-            {
-                freeTextTraitName: "Player",
-                initialValue: "Chuck"
-            },
-            {
-                freeTextTraitName: "Chronicle",
-                initialValue: "The Muscleflex Chronicles"
-            },
-            {
-                freeTextTraitName: "Nature",
-                initialValue: "Wizard"
-            },
-            {
-                dropdownTraitName: "Demeanor",
-                initialValue: "Muscle",
-                validValues: ["Muscle", "Wizard", "Muscle Wizard"]
-            },
-            {
-                dropdownTraitName: "Concept",
-                initialValue: "Muscle Wizard",
-                validValues: ["Muscle", "Wizard", "Muscle Wizard"]
-            },
-            {
-                freeTextTraitName: "Clan",
-                initialValue: "Beefjah"
-            },
-            {
-                freeTextTraitName: "Generation",
-                initialValue: "Beefjah" //TODO: some kind of non-editable field thing for derived values
-            },
-            {
-                freeTextTraitName: "Sire",
-                initialValue: "Bob The Wizard"
-            },
-        ],
-
-        PhysicalAttributes: [],
-        SocialAttributes: [],
-        MentalAttributes: [],
-
-        PhysicalSkills: [],
-        SocialSkills: [],
-        MentalSkills: [],
-
-        AddPowerTraits: [],
-        PowerTraits: [],
-
-        ValidSpecificPowers: new Map<string, string[]>,
-        SpecificPowers: new Map<string, string[]>,
-
-        AddBackgrounds: [],
-        Backgrounds: [],
-
-        ValidMeritsFlaws: [],
-        MeritsFlaws: [],
-
-        Path: {
-            pathName: ""
-        },
-
-        Beliefs: [],
-
-        ValidWeapons: [],
-        Weapons: [],
-
-        PhysicalDescriptionBits: [],
-
-        PhysicalDescription: "",
-
-        History: "",
-
-        Personality: "",
-
-        Goals: "",
-
-        BackgroundDetails: []
-    };
-
-
-
-    return dummyData;
-}
