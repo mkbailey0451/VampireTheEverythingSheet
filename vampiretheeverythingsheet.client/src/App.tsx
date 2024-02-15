@@ -13,7 +13,7 @@ function App() {
     const [error, setError] = useState<boolean>(false);
     
     retrieveCharacterData = retrieveCharacterData || async function retrieveCharacterData() {
-        const response: Response = await fetch('GetCharacterData');
+        const response: Response = await fetch('playerpersistence');
         const data = await response.json();
 
         if (response.ok) {

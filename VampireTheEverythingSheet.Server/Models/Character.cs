@@ -3,17 +3,22 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Text.Json.Serialization;
 using VampireTheEverythingSheet.Server.DataAccessLayer;
-using static VampireTheEverythingSheet.Server.DataAccessLayer.Constants;
+using static VampireTheEverythingSheet.Server.DataAccessLayer.VtEConstants;
 
 namespace VampireTheEverythingSheet.Server.Models
 {
     public class Character
     {
-        public Character(string uniqueID, IEnumerable<TemplateKey>? templates = null)
+        private Character(string uniqueID)
+        {
+            UniqueID = uniqueID;
+        }
+
+        public Character(string uniqueID, IEnumerable<TemplateKey> templates)
         {
             UniqueID = uniqueID;
 
-            if(templates == null || !templates.Any())
+            if(!templates.Any())
             {
                 templates = new List<TemplateKey> { TemplateKey.Mortal };
             }
@@ -212,9 +217,39 @@ namespace VampireTheEverythingSheet.Server.Models
         private static Dictionary<TemplateKey, Character> GetAllTemplates()
         {
             DataTable templateData = FakeDatabase.GetDatabase().GetTemplateData();
+            Dictionary<TemplateKey, Character> output = new Dictionary<TemplateKey, Character>();
+            Dictionary<int,Trait> traitCache = new Dictionary<int,Trait>(templateData.Rows.Count);
 
-            //TODO
-            throw new NotImplementedException();
+            foreach(DataRow row in  templateData.Rows)
+            {
+                TemplateKey templateKey = (TemplateKey)row["TEMPLATE_ID"];
+                Character template;
+                if (!output.ContainsKey(templateKey))
+                {
+                    template = new Character(row["TEMPLATE_NAME"].ToString() ?? "");
+                    output.Add(templateKey, template);
+                }
+                else
+                {
+                    template = output[templateKey];
+                }
+
+                int traitID = (int)row["TRAIT_ID"];
+                if(traitCache.ContainsKey(traitID))
+                {
+                    //we can do this because the templates are never actually used as live data, and thus it doesn't matter if they have correct character associations
+                    //thus, we can save memory by not cloning the traits for the templates
+                    template._traits[traitID] = traitCache[traitID];
+                }
+                else
+                {
+                    Trait newTrait = Trait.CreateTrait(template, row);
+                    traitCache[traitID] = newTrait;
+                    template._traits[traitID] = newTrait;
+                }
+            }
+
+            return output;
         }
     }
 }

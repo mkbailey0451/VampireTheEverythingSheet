@@ -1,5 +1,8 @@
-﻿using System.Data;
-using static VampireTheEverythingSheet.Server.DataAccessLayer.Constants;
+﻿using Microsoft.VisualBasic;
+using System.Data;
+using System.Globalization;
+using VampireTheEverythingSheet.Server.DataAccessLayer;
+using static VampireTheEverythingSheet.Server.DataAccessLayer.VtEConstants;
 
 namespace VampireTheEverythingSheet.Server.Models
 {
@@ -16,22 +19,79 @@ namespace VampireTheEverythingSheet.Server.Models
             switch ((TraitType)row["TRAIT_TYPE"])
             {
                 case TraitType.IntegerTrait: return new IntegerTrait(character, row);
-                    //TODO all
+                //TODO all
+                default: throw new NotImplementedException();
             }
-
-            throw new ArgumentException("Unrecognized trait type in CreateTrait.");
         }
 
+        /// <summary>
+        /// Creates a copy of the supplied Trait but belonging to the supplied Character.
+        /// </summary>
         public static Trait CreateTrait(Character character, Trait trait)
         {
-            switch(trait)
+            switch (trait)
             {
                 case IntegerTrait intTrait: return new IntegerTrait(character, intTrait);
-                    //TODO all
+                //TODO all
+                default: throw new NotImplementedException();
             }
-            throw new ArgumentException("Unrecognized trait type in CreateTrait.");
         }
-        //TODO: Subclasses might eliminate the need for the Type property - or not, considering we're sending it to the frontend
+
+        /// <summary>
+        /// Parses the TRAIT_DATA field on a given row into more friendly tokens.
+        /// </summary>
+        private static IEnumerable<string[]> TokenizeData(DataRow row)
+        {
+            string? bigString = (row["TRAIT_DATA"] ?? "").ToString();
+            if (string.IsNullOrEmpty(bigString))
+            {
+                yield break;
+            }
+
+            foreach(string bigToken in bigString.Split('\n'))
+            {
+                yield return bigToken.Split('|');
+            }
+        }
+
+        /// <summary>
+        /// Parses the TRAIT_DATA field on a given row into a temporary object that can be used to instantiate Trait subclass members.
+        /// </summary>
+        protected static TraitData GetTraitData(DataRow row)
+        {
+            //this is technically a case of unnecessary coupling of the abstract class and its subclasses,
+            //but the alternative is basically rewriting this class in every subclass, and that's probably worse
+            TraitData output = new TraitData();
+
+            foreach (string[] tokens in TokenizeData(row))
+            {
+                switch(tokens[0])
+                {
+                    case Keywords.MinMax:
+                        output.MinValue = tokens[1];
+                        output.MaxValue = tokens[2];
+                        break;
+                    case Keywords.PossibleValues:
+                        output.PossibleValues = tokens.Skip(1).ToArray(); //TODO: use
+                        break;
+                    case Keywords.AutoHide:
+                        output.AutoHide = true;
+                        break;
+                    case Keywords.IsVar:
+                        output.IsVar = tokens[1];
+                        break;
+                    case Keywords.DerivedOption:
+
+                        for(int x = 1; x < tokens.Length - 1; x++)
+                        {
+
+                        }
+                        break;
+                }
+            }
+
+            return output;
+        }
 
         /// <summary>
         /// Creates a copy of the supplied Trait but belonging to the supplied Character.

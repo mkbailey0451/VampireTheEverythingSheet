@@ -1,5 +1,6 @@
 ﻿using System.Data;
-using static VampireTheEverythingSheet.Server.DataAccessLayer.Constants;
+using System.Diagnostics;
+using static VampireTheEverythingSheet.Server.DataAccessLayer.VtEConstants;
 
 namespace VampireTheEverythingSheet.Server.Models
 {
@@ -12,12 +13,17 @@ namespace VampireTheEverythingSheet.Server.Models
         {
             MinValue = trait.MinValue;
             MaxValue = trait.MaxValue;
+            AutoHide = trait.AutoHide;
             //TODO: More if we need it
         }
 
         public IntegerTrait(Character character, DataRow row) : base(character, row)
         {
-            //TODO
+            TraitData traitData = GetTraitData(row);
+            MinValue = traitData.MinValue;
+            MaxValue = traitData.MaxValue;
+            AutoHide = traitData.AutoHide;
+            //TODO: More if we need it
         }
 
         private int _val;
@@ -33,9 +39,11 @@ namespace VampireTheEverythingSheet.Server.Models
             }
         }
 
-        public int MinValue { get; set; }
+        public string MinValue { get; set; }
 
-        public int MaxValue { get; set; }
+        public string MaxValue { get; set; }
+
+        public bool AutoHide { get; set; }
 
         public override bool TryAssign(object newValue)
         {
@@ -44,10 +52,7 @@ namespace VampireTheEverythingSheet.Server.Models
                 return false;
             }
 
-            if(val < MinValue || val > MaxValue)
-            {
-                return false;
-            }
+            //TODO min and max validation incl. vs. variables
 
             _val = val;
             return true;

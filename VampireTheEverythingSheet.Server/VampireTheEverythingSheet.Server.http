@@ -1,6 +1,6 @@
 @VampireTheEverythingSheet.Server_HostAddress = http://localhost:5244
 
-GET {{VampireTheEverythingSheet.Server_HostAddress}}/playerpersistence/
+GET {{VampireTheEverythingSheet.Server_HostAddress}}/
 Accept: application/json
 
 ###

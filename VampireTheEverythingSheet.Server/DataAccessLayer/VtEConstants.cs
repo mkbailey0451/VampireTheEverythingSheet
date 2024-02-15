@@ -1,7 +1,16 @@
 ﻿namespace VampireTheEverythingSheet.Server.DataAccessLayer
 {
-    public static class Constants
+    public static class VtEConstants
     {
+        public static class Keywords
+        {
+            public const string MinMax = "MINMAX";
+            public const string AutoHide = "AUTOHIDE";
+            public const string PossibleValues = "VALUES";
+            public const string IsVar = "IS_VARIABLE";
+            public const string DerivedOption = "DERIVED_OPTION";
+        }
+
         public enum TemplateKey
         {
             Mortal = 0,
