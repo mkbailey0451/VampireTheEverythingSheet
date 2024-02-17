@@ -68,7 +68,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 });
             }
 
-            //TODO: We could separate out the build of each template into its own function - a bit pointless maybe, but it is Best Practices(TM)
+            //TODO: We could separate out the build of each table into its own function - a bit pointless maybe, but it is Best Practices(TM)
             #region Build traits
             var traitID = 0;
             //this is not exactly the best way to do this, but again, this is a fake database and not really how we'd do any of this anyway
@@ -81,15 +81,39 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Hidden,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.IsVar}|TRAITMAX"
+                    $"{Keywords.IsVar}|TRAITMAX" //TODO: We're probably going to have to implement some kind of RPN math value engine for this... or hardcode it
                 ],
                 [
                     traitID++,
                     "Magic Max", //name
-                    (int)TraitType.DerivedTrait,
+                    (int)TraitType.DerivedTrait, //TODO: Constant? Int? Not sure what to do here. These will need special rules, but how? Should we just hardcode some?
                     (int)TraitCategory.Hidden,
                     (int)TraitSubCategory.None,
                     $"{Keywords.IsVar}|MAGICMAX"
+                ],
+                [
+                    traitID++,
+                    "Background Max", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Hidden,
+                    (int)TraitSubCategory.None,
+                    $"{Keywords.IsVar}|BACKGROUNDMAX"
+                ],
+                [
+                    traitID++,
+                    "Path Max", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Hidden,
+                    (int)TraitSubCategory.None,
+                    $"{Keywords.IsVar}|PATHMAX"
+                ],
+                [
+                    traitID++,
+                    "Generation Max", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Hidden,
+                    (int)TraitSubCategory.None,
+                    $"{Keywords.IsVar}|GENERATIONMAX"
                 ],
                 #endregion
 
@@ -175,7 +199,6 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedDropdownTrait,
                     (int)TraitCategory.TopText,
                     (int)TraitSubCategory.None,
-                    //TODO: Work out what to actually do for this.
                     $"{Keywords.DerivedOption}|[animal]|BROOD|" + string.Join("|", GetBroodBreedSwitch()) + "\n{Keywords.PossibleValues}|" + string.Join("|", GetAllBreeds())
                 ],
                 [
@@ -480,7 +503,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|5"
                 ],
 
-                //TODO: Physical Disciplines need to have specific powers implemented a special way if we want to have all derived ratings
+                //TODO: Physical Disciplines need to have specific powers implemented a special way if we want to have all derived ratings - maybe don't and have a MINUSCOUNT rule or something?
                 #region Disciplines
                 [
                     traitID++,
@@ -488,7 +511,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -496,7 +519,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -504,7 +527,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -512,7 +535,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -520,7 +543,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -528,7 +551,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -536,7 +559,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -544,7 +567,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}"
                 ],
                 [
                     traitID++,
@@ -616,7 +639,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -624,7 +647,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -632,7 +655,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -640,7 +663,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -648,7 +671,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -656,7 +679,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -664,7 +687,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -672,7 +695,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -680,7 +703,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}"
                 ],
                 [
                     traitID++,
@@ -792,7 +815,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
 
                 //Branch Disciplines
@@ -802,7 +825,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -810,7 +833,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -818,7 +841,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
 
 
@@ -830,14 +853,14 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitSubCategory.Discipline,
                     $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
-                //TODO: Paths. Gonna need to make some of these apply to multiple somehow.
+                //TODO: Paths. Gonna need to make some of these apply to multiple somehow. I think we've done most of the work with SUBTRAIT.
                 [
                     traitID++,
                     "Bardo", //name
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -845,7 +868,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -853,7 +876,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -861,7 +884,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -869,7 +892,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}|Koldunic Sorcery"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}"
                 ],
                 [
                     traitID++,
@@ -909,7 +932,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -917,7 +940,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -925,7 +948,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 [
                     traitID++,
@@ -933,23 +956,3514 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.MainTraitCount}"
                 ],
                 #endregion
 
                 //TODO: Lores, Tapestries, Knits, Arcana
-                //TODO: Specific Powers (oh golly...)
+
+                #region Specific Powers
+                [
+                    traitID++,
+                    "Feral Whispers (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Beckoning (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Animal Succulence (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Quell the Beast (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Species Speech (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Subsume the Spirit (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Drawing Out the Beast (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shared Soul (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Heart of the Pack (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Conquer the Beast (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Nourish the Savage Beast (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Subsume the Pack (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Taunt The Caged Beast (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Heart of the Wild (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Unchain the Beast (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Animalism Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Heightened Senses (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Aura Perception (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Spirit’s Touch (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ever-Watchful Eye (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Telepathy (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Breach The Mind’s Sanctum (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mind to Mind (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Karmic Sight (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Through Another’s Eyes (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Into Another’s Heart (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Eyes of the Grave (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "False Slumber (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Auspex Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Enrich the Spirit (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Quell the Ravening Serpent (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Vows Unbroken (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Gift of Apis (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Whisper of Dawn (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Boon of Anubis (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Bring Forth the Dawn (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Pillar of Osiris (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mummification (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ra’s Blessing (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Celerity Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ignis Fatuus (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fata Morgana (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Apparition (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Permanency (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Horrid Reality (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "False Resonance (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fatuus Mastery (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shared Nightmare (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Far Fatuus (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Suspension of Disbelief (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Figment (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Through The Cracks (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Chimerstry Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Sense The Sin (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fear of the Void Below (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Conflagration (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Psychomachia (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Beastly Pact (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Concordance (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Herald of Topheth (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Contagion (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Call the Great Beast (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Passion (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fracture (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Eyes of Chaos (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Voice of Insanity (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Total Madness (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Babble (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Sibyl’s Tongue (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Weaving the Tapestry (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shattered Mirror (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Speak To The Stars (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Father’s Blood (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Command (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mesmerize (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Forgetful Mind (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Conditioning (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Obedience (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Possession (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Chain the Psyche (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Loyalty (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mass Manipulation (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Still the Mortal Flesh (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Far Mastery (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Speak Through the Blood (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dominate Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Personal Armor (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shared Strength (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fortitude Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Missing Voice (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Phantom Speaker (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Madrigal (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Virtuosa (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Siren’s Beckoning (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Persistent Echo (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shattering Crescendo (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Riddle (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fae Sight (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Oath of Iron (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Walk In Dreaming (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fae Words (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Iron In The Mind (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Elysian Glade (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Geas (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Wyrd (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Sense Vitality (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Anesthetic Touch (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Corpore Sano (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mens Sana (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Truce (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Blood Of My Blood (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Flesh Of My Flesh (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Beating Heart (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Safe Passage (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Unburdening the Bestial Soul (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Lifesense (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Renewed Vigor (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Life Through Death (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Keeper Of The Flock (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Obeah Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cloak of Shadows (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Unseen Presence (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mask of a Thousand Faces (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Vanish from the Mind’s Eye (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cloak the Gathering (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Conceal (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Soul Mask (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cache (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Veil of Blissful Ignorance (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Old Friend (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Avalonian Mist (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Create Name (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Obfuscate Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shadow Play (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shroud of Night (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Arms of the Abyss (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Black Metamorphosis (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Tenebrous Form (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Tenebrous Mastery (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Darkness Within (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shadowstep (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shadow Twin (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Witness in Darkness (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Oubliette (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ahriman’s Demesne (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Keeper of the Shadowlands (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Obtenebration Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Consecrate the Grove (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Crimson Woad (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Inscribe the Curse (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Aspect of the Beast (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Moon and Sun (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Drink Dry the Earth (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Earthshock (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Flick (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Potence Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Awe (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dread Gaze (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Entrancement (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Summon (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Majesty (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Love (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Paralyzing Glance (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Spark of Rage (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cooperation (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ironclad Command (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Pulse of the City (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Presence Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Eyes of the Beast (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Feral Claws (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Earth Meld (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mist Form (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shape of the Beast (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Restore the Mortal Visage (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Earth Control (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Flesh of Marble (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shape of the Beast’s Wrath (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Spectral Body (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Purify the Impaled Beast (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Inward Focus (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Protean Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Silence of Death (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Scorpion’s Touch (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dagon’s Call (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Baal’s Caress (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Blood Burn (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Taste of Death (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Purification (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ripples of the Heart (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Selective Silence (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Baal’s Bloody Talons (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Poison the Well of Life (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Songs of Distant Vitae (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Condemn the Sins of  the Father (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Quietus Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Brother’s Blood (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Octopod (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Gestalt (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Walk of Caine (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Coagulated Entity (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Eyes of the Serpent (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Tongue of the Asp (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Skin of the Adder (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Form of the Cobra (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Heart of Darkness (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cobra Fangs (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Divine Image (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Heart Thief (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shadow of Apep (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Serpentis Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Hourglass of the Mind (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Recurring Contemplation (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Leaden Moment (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Patience of the Norns (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Clotho’s Gift (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Kiss of Lachesis (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "See Between Moments (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Clio’s Kiss (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cheat the Fates (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Sense Infirmity (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Seek the Hated Foe (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Touch of Abaddon (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Armor of Caine’s Fury (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Sword of Michael (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Malleable Visage (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fleshcraft (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Bonecraft (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Horrid Form (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Bloodform (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Chiropteran Marauder (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cocoon (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Breath of the Dragon (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Earth’s Vast Haven (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Zahhak (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Vicissitude Supremacy (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Stoneskin (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Claws of Stone (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Scry the Hearthstone (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Humble As The Earth (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Reshape the Fortress (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Sand Form (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Flesh to Stone (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Golem (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Heightened Senses (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Aura Perception (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Spirit’s Touch (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ever-Watchful Eye (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Telepathy (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Breach The Mind’s Sanctum (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mask of a Thousand Faces (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Vanish from the Mind’s Eye (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cloak the Gathering (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Eyes of the Beast (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Earth Meld (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mist Form (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shape of the Beast (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Restore the Mortal Visage (••••• •)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Mind to Mind (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Conceal (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Soul Mask (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Earth Control (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Flesh of Marble (••••• ••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Through Another’s Eyes (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cache (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Veil of Blissful Ignorance (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shape of the Beast’s Wrath (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Spectral Body (••••• •••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Into Another’s Heart (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Old Friend (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Purify the Impaled Beast (••••• ••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Eyes of the Grave (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "False Slumber (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Avalonian Mist (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Create Name (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Inward Focus (••••• •••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Confer with the Blade (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Grasp of the Mountain (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Pierce Steel’s Skin (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Razor’s Shield (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Spirit of Zulfiqar (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Decay (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Gnarl Wood (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Acidic Touch (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Atrophy (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Turn to Dust (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (1)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (2)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (3)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (4)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (5)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (1)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (2)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (3)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (4)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (5)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "A Taste for Blood (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Blood Rage (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Blood of Potency (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Theft of Vitae (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cauldron of Blood (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Summon the Simple Form (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Permanency (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Magic of the Smith (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Reverse Conjuration (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Power Over Life (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Grasping Soil (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Endurance of Stone (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Hungry Earth (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Root of Vitality (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Kupala’s Fury (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fiery Courage (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Combust (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Wall of Magma (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Heat Wave (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Volcanic Blast (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Pool of Lies (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Watery Haven (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fog Over Sea (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Minions of the Deep (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dessicate (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Doom Tide (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Breath of Whispers (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Biting Gale (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Breeze of Lethargy (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ride the Tempest (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Tempest (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shroudsight (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Lifeless Tongues (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dead Hand (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ex Nihilo (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shroud Mastery (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Tremens (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Apprentice’s Brooms (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Shambling Hordes (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Soul Stealing (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Daemonic Possession (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "A Touch of Death (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Reveal the Catene (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Tread Upon the Grave (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Death Knell (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Ephemeral Binding (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Masque of Death (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cold of the Grave (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Curse of Life (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Gift of the Corpse (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Gift of Life (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Destroy the Husk (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Rigor Mortis (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Wither (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Corrupt the Undead Flesh (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dissolve the Flesh (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Whispers to the Soul (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Kiss of the Dark Mother (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dark Humors (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Clutching the Shroud (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Black Breath (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Witness of Death (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Summon Soul (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Compel Soul (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Haunting (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Torment (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Eyes of the Dead (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Aura of Decay (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Soul Feast (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Breath of Thanatos (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Night Cry (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Elemental Strength (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Wooden Tongues (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Animate the Unmoving (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Elemental Form (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Summon Elemental (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Herbal Wisdom (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Speed the Season’s Passing (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dance of Vines (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Verdant Haven (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Awaken the Forest Giants (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Decay (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Gnarl Wood (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Acidic Touch (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Atrophy (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Turn to Dust (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (1)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (2)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (3)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (4)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind (5)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Eyes of the Sea (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Prison of Water (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Blood to Water (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Flowing Wall (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dehydrate (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (1)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (2)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (3)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (4)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames (5)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "A Taste for Blood (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Blood Rage (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Blood of Potency (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Theft of Vitae (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Cauldron of Blood (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Summon the Simple Form (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Permanency (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Magic of the Smith (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Reverse Conjuration (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Power Over Life (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Contradict (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Subvert (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dissociate (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Addiction (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Dependence (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "War Cry (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Strike True (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Wind Dance (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fearless Heart (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Comrades at Arms (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Analyze (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Burnout (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Encrypt/Decrypt (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Remote Access (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Telecommute (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Zillah’s Litany (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "The Crone’s Pride (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Feast of Ashes (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Uriel’s Disfavor (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Valediction (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Weather Control (1)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Weather Control (2)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Weather Control (3)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Weather Control (4)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Weather Control (5)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Turning (•)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Scourging (••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Laying on Hands (•••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Sanctification (••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+                [
+                    traitID++,
+                    "Fear Not (•••••)", //name
+                    (int)TraitType.SelectableTrait,
+                    (int)TraitCategory.SpecificPower,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                ],
+
+                //TODO: More Specific Powers (oh golly...)
+                #endregion
 
                 #region Backgrounds
                 //TODO: Put all in, sort alphabetically so trait order matches
-                //TODO: Advanced Backgrounds? If so, deal with {Keywords.MinMax}|0|5
                 [
                     traitID++,
                     "Allies",
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Background,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.MinMax}|0|BACKGROUNDMAX" //TODO: Trait for this, also put in mortal trait list
+                    $"{Keywords.MinMax}|0|BACKGROUNDMAX"
                 ],
                 [
                     traitID++,
@@ -989,7 +4503,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Background,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.MinMax}|0|GENERATIONMAX" //TODO: Trait for this, also put in vamp trait list
+                    $"{Keywords.MinMax}|0|GENERATIONMAX"
                 ],
                 [
                     traitID++,
@@ -1044,7 +4558,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 [
                     traitID++,
                     "Path",
-                    (int)TraitType.PathTrait,
+                    (int)TraitType.PathTrait, //TODO: How do we implement this exactly? Will interact weirdly with Value and such. Probably need a "second value" or a "chosen name" or something.
                     (int)TraitCategory.Path,
                     (int)TraitSubCategory.None,
                     $"{Keywords.MinMax}|0|PATHMAX\n{Keywords.PossibleValues}|" + string.Join("|", GetAllPaths()) //TODO: Trait for this, also put in mortal trait list
@@ -1176,6 +4690,8 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             string[] mortalTraitNames = [
                 "Trait Max",
                 "Magic Max",
+                "Background Max",
+                "Path Max",
 
                 "Name",
                 "Player",

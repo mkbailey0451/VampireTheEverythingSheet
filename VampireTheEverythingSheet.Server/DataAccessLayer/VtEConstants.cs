@@ -12,6 +12,7 @@
             public const string MainTraitMax = "MAINTRAIT_MAX";
             public const string MainTraitCount = "MAINTRAIT_COUNT";
             public const string SubTrait = "SUBTRAIT";
+            public const string PowerLevel = "POWER_LEVEL"; //TODO: Implement business rules
         }
 
         public enum TemplateKey
@@ -33,6 +34,7 @@
             WeaponTrait = 5,
             DerivedTrait = 6,
             DerivedDropdownTrait = 7,
+            SelectableTrait = 8, //TODO: Implement business rules
         };
 
         public enum TraitCategory

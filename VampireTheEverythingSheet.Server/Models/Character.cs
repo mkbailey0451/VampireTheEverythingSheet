@@ -10,22 +10,22 @@ namespace VampireTheEverythingSheet.Server.Models
 {
     public class Character
     {
-        public Character(string uniqueID, params TemplateKey[] templates)
+        public Character(string uniqueID, IEnumerable<TemplateKey>? templates = null)
         {
             UniqueID = uniqueID;
 
-            if(templates.Length == 0)
+            if(templates == null || !templates.Any())
             {
-                templates = [ TemplateKey.Mortal ];
+                templates = [TemplateKey.Mortal];
             }
 
-            foreach(TemplateKey template in templates)
+            foreach (TemplateKey template in templates)
             {
                 AddTemplate(template);
             }
-
-            //TODO
         }
+
+        public Character(string uniqueID, Character character) : this(uniqueID, character._templateKeys) { }
 
         private readonly HashSet<TemplateKey> _templateKeys = [];
         public void AddTemplate(TemplateKey key)
@@ -68,13 +68,30 @@ namespace VampireTheEverythingSheet.Server.Models
             {
                 return;
             }
-            //TODO: Handle removal of subtrait registrations, etc.
+
+            //We have to remove the trait from the main list of traits, the variable registry, and the subtrait registry
+
             _traits.Remove(traitID);
+
+            foreach(string key in _variables.Keys)
+            {
+                if (_variables[key] == traitID)
+                {
+                    _variables.Remove(key);
+                }
+            }
+            
+            foreach(HashSet<int> subTraits in _subTraitRegistry.Values)
+            {
+                subTraits.Remove(traitID);
+            }
+
+            //TODO: Is this everything?
         }
 
         public void RemoveTemplate(TemplateKey keyToRemove)
         {
-            if(!_templateKeys.Contains(keyToRemove))
+            if(!_templateKeys.Contains(keyToRemove) || keyToRemove == TemplateKey.Mortal)
             {
                 return;
             }

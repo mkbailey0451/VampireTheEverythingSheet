@@ -209,6 +209,8 @@ namespace VampireTheEverythingSheet.Server.Models
         }
         string? _maxValue;
 
+        public int? PowerLevel { get; private set; } = null; //TODO: Not sure if this is the best implementation
+
         /// <summary>
         /// A list of all possible values of the Trait (for dropdown lists and the like).
         /// </summary>
@@ -307,14 +309,27 @@ namespace VampireTheEverythingSheet.Server.Models
                         break;
                     case Keywords.MainTraitMax:
                         _valDerivation = TraitValueDerivation.MainTraitMax;
-                        _val = tokens[1];
+                        //Most (all?) main traits will want their own name as the main trait
+                        //TODO: Do the same for variables?
+                        _val = tokens.Length > 1
+                            ? tokens[1]
+                            : Name;
                         break;
                     case Keywords.MainTraitCount:
                         _valDerivation = TraitValueDerivation.MainTraitCount;
-                        _val = tokens[1];
+                        _val = tokens.Length > 1
+                            ? tokens[1]
+                            : Name;
                         break;
                     case Keywords.SubTrait:
                         Character.RegisterSubTrait(tokens[1], this);
+                        break;
+                    case Keywords.PowerLevel:
+                        PowerLevel = tokens.Length > 1
+                            ? Utils.TryGetInt(tokens[1])
+                            : (from nameChar in Name
+                               where nameChar == '•'
+                               select nameChar).Count();
                         break;
                 }
             }
