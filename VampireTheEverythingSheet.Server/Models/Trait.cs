@@ -1,144 +1,325 @@
 ﻿using Microsoft.VisualBasic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
+using System.Xml.Linq;
 using VampireTheEverythingSheet.Server.DataAccessLayer;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static VampireTheEverythingSheet.Server.DataAccessLayer.VtEConstants;
 
 namespace VampireTheEverythingSheet.Server.Models
 {
-    public abstract class Trait
+    public class Trait
     {
+        #region Public interface
+
         /// <summary>
-        /// Creates a Trait belonging to the supplied Character based on the data supplied by the DataRow.
-        /// Expected fields are as follows: TRAIT_ID(int), TRAIT_NAME(string), TRAIT_TYPE(int valid for Constants.TraitType), 
-        /// TRAIT_CATEGORY(int valid for Constants.TraitCategory), TRAIT_SUBCATEGORY(int valid for Constants.TraitSubCategory),
-        /// DATA(specially formatted string)
+        /// Creates a copy of the supplied Trait but belonging to the supplied Character.
+        /// For interface reasons, this constructor does NOT copy the Value field.
         /// </summary>
-        public static Trait CreateTrait(Character character, DataRow row)
+        public Trait(Character character, Trait trait)
         {
-            switch ((TraitType)row["TRAIT_TYPE"])
+            Character = character;
+            UniqueID = trait.UniqueID;
+            Name = trait.Name;
+            Type = trait.Type;
+            Category = trait.Category;
+            SubCategory = trait.SubCategory;
+
+            _data = trait._data;
+            ProcessTraitData(_data);
+        }
+
+        /// <summary>
+        /// Creates a Trait belonging to the supplied Character based on the supplied TraitTemplate.
+        /// </summary>
+        public Trait(Character character, TraitTemplate template)
+        {
+            //there are a lot of possible exceptions here, but the correct thing to do in this case is throw them anyway
+            Character = character;
+            UniqueID = template.UniqueID;
+            Name = template.Name;
+            Type = template.Type;
+            Category = template.Category;
+            SubCategory = template.SubCategory;
+
+            _data = template.Data;
+            ProcessTraitData(_data);
+        }
+
+        /// <summary>
+        /// The Character to whom this Trait belongs.
+        /// </summary>
+        public Character Character { get; private set; }
+
+        /// <summary>
+        /// The trait ID of this Trait. Each different Trait has a unique ID.
+        /// </summary>
+        public int UniqueID { get; private set; }
+
+        /// <summary>
+        /// The name of the Trait, such as Strength, Path, or Generation. There are NOT guaranteed to be unique!
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// The type of Trait, which determines its validation rules and how it is rendered on the front end.
+        /// (This could have been implemented as subclasses, but the amount of duplicated code across different subclasses was becoming unreasonable.)
+        /// </summary>
+        public TraitType Type { get; private set; }
+
+        /// <summary>
+        /// The category of the Trait, which helps determine where on the page it will be rendered.
+        /// </summary>
+        public TraitCategory Category { get; private set; }
+
+        /// <summary>
+        /// The subcategory of the Trait, which helps determine where on the page it will be rendered and what character templates can use it.
+        /// </summary>
+        public TraitSubCategory SubCategory { get; private set; }
+
+        /// <summary>
+        /// Returns the "display" value of the object, which is used for dropdowns with derived values and things like that. Contrasted with Value, 
+        /// which retains a state that can be referenced sensibly on the backend.
+        /// </summary>
+        public string DisplayValue
+        {
+            get
             {
-                case TraitType.IntegerTrait: return new IntegerTrait(character, row);
-                //TODO all
-                default: throw new NotImplementedException();
+                //get the value of, well, Value as a string - in most cases, this is also the display value
+                string? rawTraitVal = Value.ToString() ?? "";
+
+                //TODO: If there don't end up being multiple cases in this switch, refactor it to a compound if condition
+                switch (_valDerivation)
+                {
+                    //but if there are derived options, we might display something different
+                    case TraitValueDerivation.DerivedOptions:
+                        
+                        //if this is, in fact, a derived option and not a normal one (because there can be a mix)...
+                        if(DerivedOptionsLookup.ContainsKey(rawTraitVal))
+                        {
+                            //we pull out the Dictionary that governs the mapping of character variable values to display values for this trait
+                            Dictionary<string, string> deriveSwitch = DerivedOptionsSwitches[rawTraitVal];
+                            //as well as the character value in question
+                            string variableVal = (Character.GetVariable(rawTraitVal) ?? "").ToString() ?? "";
+                            //and then we actually map it - this should theoretically always work, but we fall back on returning the raw trait value if it doesn't work
+                            //TODO: We should probably log the error, though
+                            if(deriveSwitch.TryGetValue(variableVal, out string? derivedValue))
+                            {
+                                return derivedValue;
+                            }
+                        }
+                        break;
+                }
+                return rawTraitVal;
             }
         }
 
         /// <summary>
-        /// Creates a copy of the supplied Trait but belonging to the supplied Character.
+        /// The true backend value of the object. Be warned that setting this attribute can fail silently due to validations. To avoid this behavior, use TryAssign instead.
         /// </summary>
-        public static Trait CreateTrait(Character character, Trait trait)
+        public object Value
         {
-            switch (trait)
+            get
             {
-                case IntegerTrait intTrait: return new IntegerTrait(character, intTrait);
-                //TODO all
-                default: throw new NotImplementedException();
+                switch(_valDerivation)
+                {
+                    case TraitValueDerivation.Standard:
+                    case TraitValueDerivation.DerivedOptions: //DerivedOptions only affects display values
+                        return _val;
+                    case TraitValueDerivation.DerivedSum:
+                        int sum = 0;
+                        foreach(string summand in _val as IEnumerable<string> ?? [])
+                        {
+                            if(Character.GetVariable(summand, out int intSummand))
+                            {
+                                sum += intSummand;
+                            }
+                            else
+                            {
+                                throw new Exception("Unrecognized summand: " + summand);
+                            }
+                        }
+                        return sum;
+                    case TraitValueDerivation.MainTraitMax:
+                        return Character.GetMaxSubTrait((string)_val);
+                    case TraitValueDerivation.MainTraitCount:
+                        return Character.CountSubTraits((string)_val);
+                    //TODO
+                    default:
+                        throw new NotImplementedException();
+                }
+            }
+            set
+            {
+                TryAssign(value);
             }
         }
+        private object _val = "";
+        private TraitValueDerivation _valDerivation = TraitValueDerivation.Standard;
+
+        /// <summary>
+        /// Attempts to safely assign the new value of the Trait, validating the input for type and other restrictions. Returns true if the assignment was successful.
+        /// </summary>
+        public bool TryAssign(object newValue)
+        {
+            int min = MinValue,
+                max = MaxValue;
+
+            if(min != -1 && max != -1)
+            {
+                if(!Utils.TryGetInt(newValue, out int intValue) || intValue < min || intValue > max)
+                {
+                    return false;
+                }
+            }
+
+            if(_possibleValues.Length != 0 && !_possibleValues.Contains(newValue))
+            {
+                return false;
+            }
+            //TODO
+
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Minimum numerical value of the Trait (if applicable).
+        /// </summary>
+        public int MinValue
+        {
+            get
+            {
+                //Sadly, we can't memoize the value because these variables can change over time
+                return Character.GetVariable(_minValue) as int? ?? -1;
+            }
+        }
+        string? _minValue;
+
+        /// <summary>
+        /// Maximum numerical value of the Trait (if applicable).
+        /// </summary>
+        public int MaxValue
+        {
+            get
+            {
+                //Sadly, we can't memoize the value because these variables can change over time
+                return Character.GetVariable(_maxValue) as int? ?? -1;
+            }
+        }
+        string? _maxValue;
+
+        /// <summary>
+        /// A list of all possible values of the Trait (for dropdown lists and the like).
+        /// </summary>
+        public IEnumerable<string> PossibleValues
+        {
+            get
+            {
+                //we don't want to return the object itself because it's mutable
+                foreach(string value in _possibleValues)
+                {
+                    yield return value;
+                }
+            }
+        }
+        private string[] _possibleValues = [];
+
+        public bool AutoHide { get; private set; }
+
+        #endregion
+
+        #region Private members
+
+        /// <summary>
+        /// Every key in this Dictionary is the "dummy" name of an option (stored in PossibleValues) whose actual value changes based on the 
+        /// value of some variable stored on the Character. The associated value is the name of the variable. (For example, the Breed of an animal-form
+        /// Kalebite is internally listed as "[animal]" in the database. This is associated with the BROOD variable, because the name of that breed varies
+        /// according to the Brood of the Kalebite.)
+        /// </summary>
+        private Dictionary<string, string> DerivedOptionsLookup { get; set; } = [];
+
+        /// <summary>
+        /// Every key in this Dictionary is the "dummy" name of an option (stored in PossibleValues) whose actual value changes based on the 
+        /// value of some variable stored on the Character. The associated value is a Dictionary of values of that variable, mapped to the 
+        /// correct value to transform that option to. (For example, the Breed of an animal-form Kalebite is internally listed as "[animal]" 
+        /// in the database. This is associated with the BROOD variable, because the name of that breed varies according to the Brood of the Kalebite. 
+        /// In this situation, the key "[animal]" would retrieve a Dictionary with keys of broods - Kalebite, Aragite, etc. - and values of their associated animal
+        /// Breed names - Lycanth, Arachnes, etc.
+        /// </summary>
+        private Dictionary<string, Dictionary<string, string>> DerivedOptionsSwitches { get; set; } = [];
 
         /// <summary>
         /// Parses the TRAIT_DATA field on a given row into more friendly tokens.
         /// </summary>
-        private static IEnumerable<string[]> TokenizeData(DataRow row)
+        private static IEnumerable<string[]> TokenizeData(string traitData)
         {
-            string? bigString = (row["TRAIT_DATA"] ?? "").ToString();
-            if (string.IsNullOrEmpty(bigString))
+            if (string.IsNullOrEmpty(traitData))
             {
                 yield break;
             }
 
-            foreach(string bigToken in bigString.Split('\n'))
+            foreach(string bigToken in traitData.Split('\n'))
             {
                 yield return bigToken.Split('|');
             }
         }
 
         /// <summary>
-        /// Parses the TRAIT_DATA field on a given row into a temporary object that can be used to instantiate Trait subclass members.
+        /// It's easier to reprocess this every time (to ensure variables get properly registered and so on) than to try to sensibly copy all the data structures
+        /// created by ProcessTraitData.
         /// </summary>
-        protected static TraitData GetTraitData(DataRow row)
-        {
-            //this is technically a case of unnecessary coupling of the abstract class and its subclasses,
-            //but the alternative is basically rewriting this class in every subclass, and that's probably worse
-            TraitData output = new TraitData();
+        private readonly string _data;
 
-            foreach (string[] tokens in TokenizeData(row))
+        /// <summary>
+        /// Parses the TRAIT_DATA field on a given row and sets up the Trait accordingly.
+        /// </summary>
+        private void ProcessTraitData(string traitData)
+        {
+            //TODO: Create TraitProps
+            foreach (string[] tokens in TokenizeData(traitData))
             {
                 switch(tokens[0])
                 {
                     case Keywords.MinMax:
-                        output.MinValue = tokens[1];
-                        output.MaxValue = tokens[2];
+                        _minValue = tokens[1];
+                        _maxValue = tokens[2];
                         break;
                     case Keywords.PossibleValues:
-                        output.PossibleValues = tokens.Skip(1).ToArray(); //TODO: use
+                        _possibleValues = tokens.Skip(1).ToArray(); //TODO: use
                         break;
                     case Keywords.AutoHide:
-                        output.AutoHide = true;
+                        AutoHide = true;
                         break;
                     case Keywords.IsVar:
-                        output.IsVar = tokens[1];
+                        Character.RegisterVariable(tokens[1], this);
+                        //TODO: Probably some flags for updating the Character from the Trait, vice versa, incrememting the Trait...
                         break;
                     case Keywords.DerivedOption:
-
-                        for(int x = 1; x < tokens.Length - 1; x++)
+                        _valDerivation = TraitValueDerivation.DerivedOptions;
+                        DerivedOptionsLookup[tokens[1]] = tokens[2];
+                        Dictionary<string,string> derivedSwitch = [];
+                        for (int x = 3; x < tokens.Length - 1; x += 2)
                         {
-
+                            derivedSwitch[tokens[x]] = tokens[x + 1];
                         }
+                        DerivedOptionsSwitches[tokens[1]] = derivedSwitch;
+                        break;
+                    case Keywords.MainTraitMax:
+                        _valDerivation = TraitValueDerivation.MainTraitMax;
+                        _val = tokens[1];
+                        break;
+                    case Keywords.MainTraitCount:
+                        _valDerivation = TraitValueDerivation.MainTraitCount;
+                        _val = tokens[1];
+                        break;
+                    case Keywords.SubTrait:
+                        Character.RegisterSubTrait(tokens[1], this);
                         break;
                 }
             }
-
-            return output;
         }
 
-        /// <summary>
-        /// Creates a copy of the supplied Trait but belonging to the supplied Character.
-        /// </summary>
-        protected Trait(Character character, Trait trait)
-        {
-            Character = character;
-            ID = trait.ID;
-            Name = trait.Name;
-            Type = trait.Type;
-            Category = trait.Category;
-            SubCategory = trait.SubCategory;
-            Data = trait.Data;
-        }
-
-        /// <summary>
-        /// Creates a Trait belonging to the supplied Character based on the data supplied by the DataRow.
-        /// Expected fields are as follows: TRAIT_ID(int), TRAIT_NAME(string), TRAIT_TYPE(int valid for Constants.TraitType), 
-        /// TRAIT_CATEGORY(int valid for Constants.TraitCategory), TRAIT_SUBCATEGORY(int valid for Constants.TraitSubCategory),
-        /// DATA(specially formatted string)
-        /// </summary>
-        protected Trait(Character character, DataRow row)
-        {
-            //there are a lot of possible exceptions here, but the correct thing to do in this case is throw them anyway
-            Character = character;
-            ID = (int)row["TRAIT_ID"];
-            Name = (string)row["TRAIT_NAME"];
-            Type = (TraitType)row["TRAIT_TYPE"];
-            Category = (TraitCategory)row["TRAIT_CATEGORY"];
-            SubCategory = (TraitSubCategory)row["TRAIT_SUBCATEGORY"];
-            Data = (string)row["DATA"];
-        }
-
-        public abstract bool TryAssign(object newValue);
-
-        public Character Character { get; private set; }
-
-        public int ID { get; private set; }
-
-        public string Name { get; private set; }
-
-        public TraitType Type { get; private set; }
-
-        public TraitCategory Category { get; private set; }
-
-        public TraitSubCategory SubCategory { get; private set; }
-
-        public string Data { get; private set; }
+        #endregion
     }
 }

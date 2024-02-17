@@ -9,6 +9,9 @@
             public const string PossibleValues = "VALUES";
             public const string IsVar = "IS_VARIABLE";
             public const string DerivedOption = "DERIVED_OPTION";
+            public const string MainTraitMax = "MAINTRAIT_MAX";
+            public const string MainTraitCount = "MAINTRAIT_COUNT";
+            public const string SubTrait = "SUBTRAIT";
         }
 
         public enum TemplateKey
@@ -48,6 +51,7 @@
             Path = 9,
             Weapon = 10,
             PhysicalDescriptionBit = 11,
+            Hidden = 12,
         };
 
         public enum TraitSubCategory
@@ -68,5 +72,14 @@
             NaturalWeapon = 9,
             SelectableWeapon = 10,
         };
+
+        public enum TraitValueDerivation
+        {
+            Standard,
+            DerivedSum,
+            DerivedOptions,
+            MainTraitMax,
+            MainTraitCount
+        }
     }
 }

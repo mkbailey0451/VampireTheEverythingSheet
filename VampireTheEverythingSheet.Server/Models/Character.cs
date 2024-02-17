@@ -1,6 +1,7 @@
 ﻿using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Text.Json.Serialization;
 using VampireTheEverythingSheet.Server.DataAccessLayer;
 using static VampireTheEverythingSheet.Server.DataAccessLayer.VtEConstants;
@@ -9,18 +10,13 @@ namespace VampireTheEverythingSheet.Server.Models
 {
     public class Character
     {
-        private Character(string uniqueID)
-        {
-            UniqueID = uniqueID;
-        }
-
-        public Character(string uniqueID, IEnumerable<TemplateKey> templates)
+        public Character(string uniqueID, params TemplateKey[] templates)
         {
             UniqueID = uniqueID;
 
-            if(!templates.Any())
+            if(templates.Length == 0)
             {
-                templates = new List<TemplateKey> { TemplateKey.Mortal };
+                templates = [ TemplateKey.Mortal ];
             }
 
             foreach(TemplateKey template in templates)
@@ -31,7 +27,7 @@ namespace VampireTheEverythingSheet.Server.Models
             //TODO
         }
 
-        private HashSet<TemplateKey> _templateKeys = new HashSet<TemplateKey>();
+        private readonly HashSet<TemplateKey> _templateKeys = [];
         public void AddTemplate(TemplateKey key)
         {
             if(_templateKeys.Contains(key))
@@ -44,16 +40,11 @@ namespace VampireTheEverythingSheet.Server.Models
             }
             _templateKeys.Add(key);
 
-            Character template = Templates[key];
+            CharacterTemplate template = CharacterTemplate.AllCharacterTemplates[key] ?? throw new ArgumentException("Unrecognized template " +  key + "in AddTemplate.");
 
-            if(template == null)
+            foreach (int traitID in template.TraitIDs)
             {
-                throw new ArgumentException("Unrecognized template " +  key + "in AddTemplate.");
-            }
-
-            foreach(Trait trait in template._traits.Values)
-            {
-                AddTrait(trait);
+                AddTrait(traitID);
             }
 
             if(key != TemplateKey.Mortal)
@@ -62,22 +53,23 @@ namespace VampireTheEverythingSheet.Server.Models
             }
         }
 
-        public void AddTrait(Trait trait)
+        public void AddTrait(int traitID)
         {
-            if(_traits.Keys.Contains(trait.ID))
+            if(_traits.ContainsKey(traitID))
             {
                 return;
             }
-            _traits[trait.ID] = Trait.CreateTrait(this, trait);
+            _traits[traitID] = new Trait(this, TraitTemplate.AllTraitTemplates[traitID]);
         }
 
-        public void RemoveTrait(Trait trait)
+        public void RemoveTrait(int traitID)
         {
-            if (!_traits.Keys.Contains(trait.ID))
+            if (!_traits.ContainsKey(traitID))
             {
                 return;
             }
-            _traits.Remove(trait.ID);
+            //TODO: Handle removal of subtrait registrations, etc.
+            _traits.Remove(traitID);
         }
 
         public void RemoveTemplate(TemplateKey keyToRemove)
@@ -89,16 +81,14 @@ namespace VampireTheEverythingSheet.Server.Models
             _templateKeys.Remove(keyToRemove);
 
             //build set of traits to keep
-            HashSet<int> keepTraits = new HashSet<int>();
+            HashSet<int> keepTraits = [];
 
             foreach (TemplateKey templateKey in _templateKeys.Union([ TemplateKey.Mortal ]))
             {
-                Character template = Templates[templateKey];
-                if(template == null)
+                if(CharacterTemplate.AllCharacterTemplates.TryGetValue(templateKey, out CharacterTemplate? template))
                 {
-                    continue;
+                    keepTraits.UnionWith(template.TraitIDs);
                 }
-                keepTraits.UnionWith(template._traits.Keys);
             }
 
             //remove all others
@@ -106,14 +96,132 @@ namespace VampireTheEverythingSheet.Server.Models
             {
                 if(!keepTraits.Contains(traitID))
                 {
-                    _traits.Remove(traitID);
+                    RemoveTrait(traitID);
                 }
             }
         }
 
+        /// <summary>
+        /// A Dictionary mapping the names of variables to the unique IDs of Traits that represent these variables.
+        /// This is done this way, rather than referencing the Trait directly, because it makes tracking their addition and removal easier.
+        /// </summary>
+        private readonly Dictionary<string, int> _variables = [];
+
+        /// <summary>
+        /// If the supplied string is numeric, returns an int representation of it.
+        /// If the supplied string is the name of a variable registered to the character, returns the current value of that variable.
+        /// Otherwise, returns null.
+        /// This method will automatically convert retrieved numeric strings to integers when retrieving them.
+        /// </summary>
+        public object? GetVariable(string? variableName)
+        {
+            if(string.IsNullOrEmpty(variableName))
+            {
+                return null;
+            }
+
+            //Since we do not accept numeric strings as variable names, we provide this automatic parsing functionality as a courtesy to calling methods.
+            //We could wait for the Utils.TryGetInt call below to handle this case, but that would result in a lot of unnecessary parsing on the way.
+            if (int.TryParse(variableName, out int result))
+            {
+                return result;
+            }
+
+            int multiplier = 1;
+
+            //support for negative variables - useful for sums
+            if(variableName.StartsWith('-'))
+            {
+                multiplier = -1;
+                variableName = variableName[1..];
+            }
+
+            if(!_variables.TryGetValue(variableName, out int traitID))
+            {
+                return null;
+            }
+
+            //we handle the variable expansion to the greatest extent possible, but not all variables are of a straightforward type
+            object val = _traits[traitID].Value;
+
+            if (Utils.TryGetInt(val, out int intVal))
+            {
+                return intVal * multiplier;
+            }
+
+            return val;
+        }
+
+        public bool GetVariable<T>(string variableName, out T? value)
+        {
+            object? val = GetVariable(variableName);
+            if(val is T t)
+            {
+                value = t;
+                return true;
+            }
+            value = default;
+            return false;
+        }
+
+        /// <summary>
+        /// A mapping of subtrait names to the sets of unique trait IDs corresponding to those traits.
+        /// Much like with _variables, we do this to make it easier to track the addition and removal of such Traits.
+        /// </summary>
+        private readonly Dictionary<string, HashSet<int>> _subTraitRegistry = [];
+
+        public int GetMaxSubTrait(string mainTrait)
+        {
+            if (_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
+            {
+                return
+                (
+                    from traitID in subTraits
+                    select Utils.TryGetInt(_traits[traitID].Value) ?? int.MinValue
+                ).Max();
+            }
+            return 0;
+        }
+
+        public int CountSubTraits(string mainTrait)
+        {
+            if(_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
+            {
+                return subTraits.Count;
+            }
+            return 0;
+        }
+
+        public void RegisterVariable(string variableName, Trait associatedTrait)
+        {
+            //we do not accept empty or numeric variable names
+            if(variableName == "" || int.TryParse(variableName, out _))
+            {
+                return;
+            }
+            if(!_variables.ContainsKey(variableName))
+            {
+                _variables[variableName] = associatedTrait.UniqueID;
+            }
+            else
+            {
+                throw new Exception("Tried to register an already existing variable: " + variableName);
+            }
+        }
+
+        public void RegisterSubTrait(string mainTrait, Trait subTrait)
+        {
+            if (_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
+            {
+                subTraits.Add(subTrait.UniqueID);
+                return;
+            }
+            _subTraitRegistry[mainTrait] = [ subTrait.UniqueID ];
+        }
+
         public string UniqueID { get; set; }
 
-        private SortedDictionary<int,Trait> _traits = new SortedDictionary<int, Trait>();
+        private readonly SortedDictionary<int,Trait> _traits = [];
 
         public IEnumerable<Trait> TopTextTraits
         {
@@ -209,47 +317,6 @@ namespace VampireTheEverythingSheet.Server.Models
                         && trait.SubCategory == TraitSubCategory.Mental
                     select trait;
             }
-        }
-
-
-        private static readonly ReadOnlyDictionary<TemplateKey, Character> Templates = new ReadOnlyDictionary<TemplateKey, Character>(GetAllTemplates());
-
-        private static Dictionary<TemplateKey, Character> GetAllTemplates()
-        {
-            DataTable templateData = FakeDatabase.GetDatabase().GetTemplateData();
-            Dictionary<TemplateKey, Character> output = new Dictionary<TemplateKey, Character>();
-            Dictionary<int,Trait> traitCache = new Dictionary<int,Trait>(templateData.Rows.Count);
-
-            foreach(DataRow row in  templateData.Rows)
-            {
-                TemplateKey templateKey = (TemplateKey)row["TEMPLATE_ID"];
-                Character template;
-                if (!output.ContainsKey(templateKey))
-                {
-                    template = new Character(row["TEMPLATE_NAME"].ToString() ?? "");
-                    output.Add(templateKey, template);
-                }
-                else
-                {
-                    template = output[templateKey];
-                }
-
-                int traitID = (int)row["TRAIT_ID"];
-                if(traitCache.ContainsKey(traitID))
-                {
-                    //we can do this because the templates are never actually used as live data, and thus it doesn't matter if they have correct character associations
-                    //thus, we can save memory by not cloning the traits for the templates
-                    template._traits[traitID] = traitCache[traitID];
-                }
-                else
-                {
-                    Trait newTrait = Trait.CreateTrait(template, row);
-                    traitCache[traitID] = newTrait;
-                    template._traits[traitID] = newTrait;
-                }
-            }
-
-            return output;
         }
     }
 }

@@ -13,11 +13,19 @@ namespace VampireTheEverythingSheet.Server.Controllers
         [HttpGet(Name = "GetCharacterData")]
         public Character GetCharacterData()
         {
+            //TODO: We probably need more unique IDs, and stuff
             string? data = SessionExtensions.GetString(HttpContext.Session, "CharacterData");
 
-            //TODO
+            if (data != null)
+            {
+                Newtonsoft.Json.JsonConvert.DeserializeObject<Character>(data);
+            }
 
-            return new Character(data ?? "");
+            Character newChar = new("testChar");
+
+            SessionExtensions.SetString(HttpContext.Session, "CharacterData", Newtonsoft.Json.JsonConvert.SerializeObject(newChar));
+
+            return newChar;
         }
 
         // POST: PlayerPersistenceController/Create

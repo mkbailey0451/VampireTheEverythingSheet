@@ -12,13 +12,19 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
     /// </summary>
     public class FakeDatabase : IDatabaseAccessLayer
     {
-        private static FakeDatabase _db = new FakeDatabase();
+        private static readonly FakeDatabase _db = new();
         public static IDatabaseAccessLayer GetDatabase()
         {
             return _db;
         }
 
-        DataTable _templates = new DataTable
+        public DataTable GetTraitTemplateData()
+        {
+            //Technically, we should do a deep copy here to avoid mutability concerns, but this *is* a fake database anyway
+            return _traits;
+        }
+
+        readonly DataTable _templates = new()
         {
             Columns =
                 {
@@ -27,7 +33,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 }
         };
 
-        DataTable _traits = new DataTable
+        readonly DataTable _traits = new()
         {
             Columns =
                 {
@@ -40,7 +46,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 }
         };
 
-        DataTable _template_x_trait = new DataTable
+        readonly DataTable _template_x_trait = new()
         {
             Columns =
                 {
@@ -49,7 +55,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 }
         };
 
-        Dictionary<string, List<int>> _traitIDsByName;
+        readonly Dictionary<string, List<int>> _traitIDsByName;
 
         private FakeDatabase()
         {
@@ -68,6 +74,25 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             //this is not exactly the best way to do this, but again, this is a fake database and not really how we'd do any of this anyway
             object?[][] rawTraits =
             [
+                #region Hidden Traits
+                [
+                    traitID++,
+                    "Trait Max", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Hidden,
+                    (int)TraitSubCategory.None,
+                    $"{Keywords.IsVar}|TRAITMAX"
+                ],
+                [
+                    traitID++,
+                    "Magic Max", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Hidden,
+                    (int)TraitSubCategory.None,
+                    $"{Keywords.IsVar}|MAGICMAX"
+                ],
+                #endregion
+
                 #region Top Traits
                 [
                     traitID++,
@@ -142,7 +167,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DropdownTrait,
                     (int)TraitCategory.TopText,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.IsVar}|BROOD\nVALUES|" + string.Join("|", GetAllBroods())
+                    $"{Keywords.IsVar}|BROOD\n{Keywords.PossibleValues}|" + string.Join("|", GetAllBroods())
                 ],
                 [
                     traitID++,
@@ -151,7 +176,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitCategory.TopText,
                     (int)TraitSubCategory.None,
                     //TODO: Work out what to actually do for this.
-                    "DERIVED_OPTION|[animal]|BROOD\nVALUES|" + string.Join("|", GetAllBreeds())
+                    $"{Keywords.DerivedOption}|[animal]|BROOD|" + string.Join("|", GetBroodBreedSwitch()) + "\n{Keywords.PossibleValues}|" + string.Join("|", GetAllBreeds())
                 ],
                 [
                     traitID++,
@@ -256,7 +281,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1" //min, max
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -264,7 +289,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -272,7 +297,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -280,7 +305,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -288,7 +313,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -296,7 +321,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -304,7 +329,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -312,7 +337,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Physical,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
 
                 [
@@ -321,7 +346,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -329,7 +354,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -337,7 +362,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -345,7 +370,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -353,7 +378,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -361,7 +386,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -369,7 +394,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -377,7 +402,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Social,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
 
                 [
@@ -386,7 +411,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -394,7 +419,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -402,7 +427,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -410,7 +435,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -418,7 +443,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -426,7 +451,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -434,7 +459,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -442,7 +467,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Skill,
                     (int)TraitSubCategory.Mental,
-                    "0,-1"
+                    $"{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 #endregion
 
@@ -452,7 +477,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Faith,
-                    "AUTOHIDE\nMINMAX|0|5"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|5"
                 ],
 
                 //TODO: Physical Disciplines need to have specific powers implemented a special way if we want to have all derived ratings
@@ -463,7 +488,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -471,7 +496,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -479,7 +504,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -487,7 +512,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -495,7 +520,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -503,7 +528,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -511,7 +536,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -519,7 +544,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -527,7 +552,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -535,7 +560,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -543,7 +568,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -551,7 +576,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -559,7 +584,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -567,7 +592,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -575,15 +600,15 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
                     "The Vitreous Path", //name
-                    (int)TraitType.DerivedTrait,
+                    (int)TraitType.DerivedTrait, //TODO: Might beome IntegerTrait
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Necromancy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Necromancy"
                 ],
                 [
                     traitID++,
@@ -591,7 +616,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -599,7 +624,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -607,7 +632,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -615,7 +640,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -623,7 +648,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -631,7 +656,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -639,7 +664,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -647,7 +672,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -655,7 +680,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -663,7 +688,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -671,7 +696,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -679,7 +704,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -687,7 +712,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -695,7 +720,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -703,7 +728,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -711,7 +736,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -719,7 +744,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -727,7 +752,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -735,7 +760,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -743,7 +768,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -751,7 +776,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -759,7 +784,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Thaumaturgy"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Thaumaturgy"
                 ],
                 [
                     traitID++,
@@ -767,7 +792,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
 
                 //Branch Disciplines
@@ -777,7 +802,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -785,7 +810,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -793,7 +818,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
 
 
@@ -803,7 +828,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 //TODO: Paths. Gonna need to make some of these apply to multiple somehow.
                 [
@@ -812,7 +837,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -820,7 +845,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -828,7 +853,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -836,7 +861,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -844,7 +869,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}|Koldunic Sorcery"
                 ],
                 [
                     traitID++,
@@ -852,7 +877,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Koldunic Sorcery"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Koldunic Sorcery"
                 ],
                 [
                     traitID++,
@@ -860,7 +885,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Koldunic Sorcery"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Koldunic Sorcery"
                 ],
                 [
                     traitID++,
@@ -868,7 +893,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Koldunic Sorcery"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Koldunic Sorcery"
                 ],
                 [
                     traitID++,
@@ -876,7 +901,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|MAGICMAX\nSUBTRAIT|Koldunic Sorcery"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Koldunic Sorcery"
                 ],
                 [
                     traitID++,
@@ -884,7 +909,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -892,7 +917,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -900,7 +925,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 [
                     traitID++,
@@ -908,7 +933,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    "AUTOHIDE\nMINMAX|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
                 ],
                 #endregion
 
@@ -917,14 +942,14 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
 
                 #region Backgrounds
                 //TODO: Put all in, sort alphabetically so trait order matches
-                //TODO: Advanced Backgrounds? If so, deal with MINMAX|0|5
+                //TODO: Advanced Backgrounds? If so, deal with {Keywords.MinMax}|0|5
                 [
                     traitID++,
                     "Allies",
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Background,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.MinMax}|0|BACKGROUNDMAX"
+                    $"{Keywords.MinMax}|0|BACKGROUNDMAX" //TODO: Trait for this, also put in mortal trait list
                 ],
                 [
                     traitID++,
@@ -964,7 +989,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.IntegerTrait,
                     (int)TraitCategory.Background,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.MinMax}|0|GENERATIONMAX"
+                    $"{Keywords.MinMax}|0|GENERATIONMAX" //TODO: Trait for this, also put in vamp trait list
                 ],
                 [
                     traitID++,
@@ -1022,7 +1047,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.PathTrait,
                     (int)TraitCategory.Path,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.MinMax}|0|PATHMAX\nVALUES|" + string.Join("|", GetAllPaths())
+                    $"{Keywords.MinMax}|0|PATHMAX\n{Keywords.PossibleValues}|" + string.Join("|", GetAllPaths()) //TODO: Trait for this, also put in mortal trait list
                 ],
 
                 #region Vital Statistics
@@ -1136,19 +1161,22 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 }
                 string key = row[1].ToString() ?? "BAD TRAIT NAME";
                 int id = int.Parse(row[0].ToString() ?? "-1");
-                if (_traitIDsByName.ContainsKey(key))
+                if (_traitIDsByName.TryGetValue(key, out List<int>? traitsOfThisName))
                 {
-                    _traitIDsByName[key].Add(id);
+                    traitsOfThisName.Add(id);
                 }
                 else
                 {
-                    _traitIDsByName[key] = new List<int> { id };
+                    _traitIDsByName[key] = [id];
                 }
             }
             #endregion
 
             #region Build template_x_trait
             string[] mortalTraitNames = [
+                "Trait Max",
+                "Magic Max",
+
                 "Name",
                 "Player",
                 "Chronicle",
@@ -1340,6 +1368,31 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
+        private IEnumerable<string> GetBroodBreedSwitch()
+        {
+            return [
+                "Kalebite", "Lycanth",
+                "Aragite", "Arachnes",
+                "Arumite", "Alopex",
+                "Chatul (Tiger)", "Ailouros",
+                "Chatul (Lion)", "Ailouros",
+                "Chatul (Panther/Jaguar)", "Ailouros",
+                "Chatul (Cheetah)", "Ailouros",
+                "Chatul (Housecat)", "Ailouros",
+                "Chatul (Bobcat)", "Ailouros",
+                "Dabberite", "Koraki",
+                "Devoroth", "Melisses",
+                "Kohen", "Arctos",
+                "Nychterid", "Chiroptera",
+                "Tashlimite", "Kouneli",
+                "Tekton", "Kastoras",
+                "Tsayadite", "Aetos",
+                "Zakarite", "Loxodon",
+                "Rishon", "[animal]",
+                "Chargol", "Skathari",
+            ];
+        }
+
         private IEnumerable<string> GetAllBreeds()
         {
             return [
@@ -1410,8 +1463,9 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
         }
         #endregion
 
-        public DataTable GetTemplateData()
+        public DataTable GetCharacterTemplateData()
         {
+            //TODO: Refactor because we're doing the trait template thing now
             //TODO: Revise this to reflect the DATA field below
             /*
              * This would normally be the result of a JOIN between the following tables:
@@ -1423,7 +1477,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
              * The tables in this class are mainly meant to simulate that functionality.
              * */
             //TODO: Note archetypes and such above - probably from a function or stored proc
-            DataTable output = new DataTable
+            DataTable output = new()
             {
                 Columns =
                 {
@@ -1431,14 +1485,6 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     new DataColumn("TEMPLATE_NAME", typeof(string)),
 
                     new DataColumn("TRAIT_ID", typeof(int)),
-                    new DataColumn("TRAIT_NAME", typeof(string)),
-                    new DataColumn("TRAIT_TYPE", typeof(int)),
-                    new DataColumn("TRAIT_CATEGORY", typeof(int)),
-                    new DataColumn("TRAIT_SUBCATEGORY", typeof(string)),
-
-                    //We don't actually send down default values from the DB when adding a template, so we don't send VALUE as a column here
-                    //the values would be stored in a CHARACTER_X_TRAIT table somewhere
-                    new DataColumn("TRAIT_DATA", typeof(string)),
                 }
             };
 
@@ -1446,19 +1492,12 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 from templateRow in _templates.Rows.Cast<DataRow>()
                 join templateXTraitRow in _template_x_trait.Rows.Cast<DataRow>()
                     on templateRow["TEMPLATE_ID"] equals templateXTraitRow["TEMPLATE_ID"]
-                join traitRow in _traits.Rows.Cast<DataRow>()
-                    on templateXTraitRow["TRAIT_ID"] equals traitRow["TRAIT_ID"]
-                orderby traitRow["TRAIT_ID"]
+                orderby templateRow["TEMPLATE_ID"], templateXTraitRow["TRAIT_ID"]
                 select new object[]
                 {
                     templateRow["TEMPLATE_ID"],
                     templateRow["TEMPLATE_NAME"],
-                    traitRow["TRAIT_ID"],
-                    traitRow["TRAIT_NAME"],
-                    traitRow["TRAIT_TYPE"],
-                    traitRow["TRAIT_CATEGORY"],
-                    traitRow["TRAIT_SUBCATEGORY"],
-                    traitRow["TRAIT_DATA"]
+                    templateXTraitRow["TRAIT_ID"],
                 };
             
             foreach (object[] row in rows)
