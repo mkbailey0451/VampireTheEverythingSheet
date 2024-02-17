@@ -851,9 +851,57 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.DerivedTrait,
                     (int)TraitCategory.Power,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.MainTraitMax}"
                 ],
-                //TODO: Paths. Gonna need to make some of these apply to multiple somehow. I think we've done most of the work with SUBTRAIT.
+                [
+                    traitID++,
+                    "Awakening of the Steel", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Power,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Assamite Sorcery\n{Keywords.MainTraitCount}|A:Awakening of the Steel"
+                ],
+                [
+                    traitID++,
+                    "Hands of Destruction", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Power,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Assamite Sorcery\n{Keywords.MainTraitCount}|A:Hands of Destruction"
+                ],
+                [
+                    traitID++,
+                    "Movement of the Mind", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Power,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Assamite Sorcery\n{Keywords.MainTraitCount}|A:Movement of the Mind"
+                ],
+                [
+                    traitID++,
+                    "The Lure of Flames", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Power,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Assamite Sorcery\n{Keywords.MainTraitCount}|A:The Lure of Flames"
+                ],
+                [
+                    traitID++,
+                    "The Path of Blood", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Power,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Assamite Sorcery\n{Keywords.MainTraitCount}|A:The Path of Blood"
+                ],
+                [
+                    traitID++,
+                    "The Path of Conjuring", //name
+                    (int)TraitType.DerivedTrait,
+                    (int)TraitCategory.Power,
+                    (int)TraitSubCategory.Discipline,
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|MAGICMAX\n{Keywords.SubTrait}|Assamite Sorcery\n{Keywords.MainTraitCount}|A:The Path of Conjuring"
+                ],
+
                 [
                     traitID++,
                     "Bardo", //name
@@ -977,7 +1025,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -985,7 +1033,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -993,7 +1041,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1001,7 +1049,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1009,7 +1057,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1017,7 +1065,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1025,7 +1073,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1033,7 +1081,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1041,7 +1089,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1049,7 +1097,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1057,7 +1105,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1065,7 +1113,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1073,7 +1121,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1081,7 +1129,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1089,7 +1137,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Animalism\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1097,7 +1145,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1105,7 +1153,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1113,7 +1161,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1121,7 +1169,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1129,7 +1177,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1137,7 +1185,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1145,7 +1193,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1153,7 +1201,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1161,7 +1209,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1169,7 +1217,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1177,7 +1225,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1185,7 +1233,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1193,7 +1241,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Auspex\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1201,7 +1249,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1209,7 +1257,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1217,7 +1265,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1225,7 +1273,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1233,7 +1281,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1241,7 +1289,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1249,7 +1297,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1257,7 +1305,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1265,7 +1313,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1273,7 +1321,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Bardo\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1281,7 +1329,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Celerity\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1289,7 +1337,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1297,7 +1345,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1305,7 +1353,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1313,7 +1361,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1321,7 +1369,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1329,7 +1377,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1337,7 +1385,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1345,7 +1393,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1353,7 +1401,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1361,7 +1409,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1369,7 +1417,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1377,7 +1425,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1385,7 +1433,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Chimerstry\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1393,7 +1441,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1401,7 +1449,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1409,7 +1457,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1417,7 +1465,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1425,7 +1473,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1433,7 +1481,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1441,7 +1489,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1449,7 +1497,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1457,7 +1505,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1465,7 +1513,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1473,7 +1521,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1481,7 +1529,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1489,7 +1537,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1497,7 +1545,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1505,7 +1553,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1513,7 +1561,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1521,7 +1569,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1529,7 +1577,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1537,7 +1585,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1545,7 +1593,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Daimoinon\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1553,7 +1601,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1561,7 +1609,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1569,7 +1617,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1577,7 +1625,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1585,7 +1633,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1593,7 +1641,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1601,7 +1649,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1609,7 +1657,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1617,7 +1665,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1625,7 +1673,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1633,7 +1681,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1641,7 +1689,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1649,7 +1697,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Dominate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1657,7 +1705,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Fortitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1665,7 +1713,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Fortitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1673,7 +1721,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Fortitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1681,7 +1729,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Melpominee\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1689,7 +1737,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Melpominee\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1697,7 +1745,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Melpominee\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1705,7 +1753,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Melpominee\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1713,7 +1761,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Melpominee\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1721,7 +1769,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Melpominee\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1729,7 +1777,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Melpominee\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1737,7 +1785,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1745,7 +1793,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1753,7 +1801,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1761,7 +1809,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1769,7 +1817,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1777,7 +1825,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1785,7 +1833,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1793,7 +1841,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1801,7 +1849,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Mytherceria\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1809,7 +1857,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1817,7 +1865,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1825,7 +1873,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1833,7 +1881,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1841,7 +1889,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1849,7 +1897,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1857,7 +1905,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1865,7 +1913,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1873,7 +1921,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1881,7 +1929,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1889,7 +1937,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1897,7 +1945,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1905,7 +1953,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1913,7 +1961,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1921,7 +1969,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obeah\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1929,7 +1977,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1937,7 +1985,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1945,7 +1993,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1953,7 +2001,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1961,7 +2009,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1969,7 +2017,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1977,7 +2025,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1985,7 +2033,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -1993,7 +2041,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2001,7 +2049,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2009,7 +2057,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2017,7 +2065,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2025,7 +2073,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obfuscate\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2033,7 +2081,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2041,7 +2089,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2049,7 +2097,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2057,7 +2105,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2065,7 +2113,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2073,7 +2121,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2081,7 +2129,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2089,7 +2137,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2097,7 +2145,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2105,7 +2153,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2113,7 +2161,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2121,7 +2169,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2129,7 +2177,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2137,7 +2185,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Obtenebration\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2145,7 +2193,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Ogham\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2153,7 +2201,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Ogham\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2161,7 +2209,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Ogham\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2169,7 +2217,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Ogham\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2177,7 +2225,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Ogham\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2185,7 +2233,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Ogham\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2193,7 +2241,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Potence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2201,7 +2249,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Potence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2209,7 +2257,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Potence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2217,7 +2265,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2225,7 +2273,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2233,7 +2281,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2241,7 +2289,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2249,7 +2297,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2257,7 +2305,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2265,7 +2313,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2273,7 +2321,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2281,7 +2329,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2289,7 +2337,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2297,7 +2345,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2305,7 +2353,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Presence\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2313,7 +2361,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2321,7 +2369,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2329,7 +2377,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2337,7 +2385,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2345,7 +2393,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2353,7 +2401,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2361,7 +2409,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2369,7 +2417,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2377,7 +2425,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2385,7 +2433,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2393,7 +2441,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2401,7 +2449,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2409,7 +2457,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Protean\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2417,7 +2465,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2425,7 +2473,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2433,7 +2481,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2441,7 +2489,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2449,7 +2497,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2457,7 +2505,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2465,7 +2513,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2473,7 +2521,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2481,7 +2529,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2489,7 +2537,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2497,7 +2545,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2505,7 +2553,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2513,7 +2561,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2521,7 +2569,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Quietus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2529,7 +2577,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Sanguinus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2537,7 +2585,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Sanguinus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2545,7 +2593,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Sanguinus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2553,7 +2601,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Sanguinus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2561,7 +2609,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Sanguinus\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2569,7 +2617,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2577,7 +2625,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2585,7 +2633,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2593,7 +2641,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2601,7 +2649,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2609,7 +2657,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2617,7 +2665,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2625,7 +2673,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2633,7 +2681,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2641,7 +2689,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Serpentis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2649,7 +2697,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2657,7 +2705,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2665,7 +2713,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2673,7 +2721,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2681,7 +2729,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2689,7 +2737,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2697,7 +2745,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2705,7 +2753,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2713,7 +2761,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Temporis\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2721,7 +2769,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Valeren\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2729,7 +2777,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Valeren\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2737,7 +2785,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Valeren\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2745,7 +2793,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Valeren\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2753,7 +2801,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Valeren\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2761,7 +2809,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2769,7 +2817,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2777,7 +2825,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2785,7 +2833,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2793,7 +2841,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2801,7 +2849,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2809,7 +2857,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2817,7 +2865,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2825,7 +2873,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2833,7 +2881,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2841,7 +2889,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Vicissitude\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2849,7 +2897,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2857,7 +2905,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2865,7 +2913,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2873,7 +2921,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2881,7 +2929,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2889,7 +2937,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2897,7 +2945,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2905,7 +2953,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2913,7 +2961,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2921,7 +2969,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2929,7 +2977,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2937,7 +2985,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2945,7 +2993,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2953,7 +3001,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2961,7 +3009,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2969,7 +3017,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2977,7 +3025,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2985,7 +3033,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -2993,7 +3041,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3001,7 +3049,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3009,7 +3057,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3017,7 +3065,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3025,7 +3073,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3033,7 +3081,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3041,7 +3089,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3049,7 +3097,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3057,7 +3105,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3065,7 +3113,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3073,7 +3121,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3081,7 +3129,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3089,7 +3137,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3097,7 +3145,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3105,7 +3153,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3113,7 +3161,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3121,7 +3169,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3129,7 +3177,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3137,7 +3185,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3145,7 +3193,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3153,7 +3201,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3161,15 +3209,18 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Visceratika\n{Keywords.PowerLevel}"
                 ],
+
+
+                //Assamite Sorcery
                 [
                     traitID++,
                     "Confer with the Blade (•)", //name
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Awakening of the Steel\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3177,7 +3228,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Awakening of the Steel\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3185,7 +3236,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Awakening of the Steel\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3193,7 +3244,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Awakening of the Steel\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3201,7 +3252,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Awakening of the Steel\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3209,7 +3260,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3217,7 +3268,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3225,7 +3276,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3233,7 +3284,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3241,7 +3292,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3249,7 +3300,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3257,7 +3308,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3265,7 +3316,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3273,7 +3324,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3281,7 +3332,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3289,7 +3340,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3297,7 +3348,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3305,7 +3356,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3313,7 +3364,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3321,7 +3372,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3329,7 +3380,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3337,7 +3388,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3345,7 +3396,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3353,7 +3404,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3361,7 +3412,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3369,7 +3420,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3377,7 +3428,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3385,7 +3436,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3393,7 +3444,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3401,15 +3452,18 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|A:The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
+
+
+                //Koldunic Sorcery
                 [
                     traitID++,
                     "Grasping Soil (•)", //name
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Earth\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3417,7 +3471,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Earth\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3425,7 +3479,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Earth\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3433,7 +3487,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Earth\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3441,7 +3495,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Earth\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3449,7 +3503,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Fire\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3457,7 +3511,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Fire\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3465,7 +3519,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Fire\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3473,7 +3527,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Fire\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3481,7 +3535,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Fire\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3489,7 +3543,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Water\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3497,7 +3551,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Water\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3505,7 +3559,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Water\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3513,7 +3567,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Water\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3521,7 +3575,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Water\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3529,7 +3583,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Water\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3537,7 +3591,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Wind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3545,7 +3599,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Wind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3553,7 +3607,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Wind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3561,7 +3615,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Wind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3569,15 +3623,18 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Way of Wind\n{Keywords.PowerLevel}"
                 ],
+
+
+                //Necromancy
                 [
                     traitID++,
                     "Shroudsight (•)", //name
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Ash Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3585,7 +3642,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Ash Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3593,7 +3650,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Ash Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3601,7 +3658,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Ash Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3609,7 +3666,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Ash Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3617,7 +3674,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Bone Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3625,7 +3682,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Bone Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3633,7 +3690,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Bone Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3641,7 +3698,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Bone Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3649,7 +3706,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Bone Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3657,7 +3714,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Cenotaph Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3665,7 +3722,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Cenotaph Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3673,7 +3730,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Cenotaph Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3681,7 +3738,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Cenotaph Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3689,7 +3746,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Cenotaph Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3697,7 +3754,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Corpse in the Monster\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3705,7 +3762,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Corpse in the Monster\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3713,7 +3770,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Corpse in the Monster\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3721,7 +3778,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Corpse in the Monster\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3729,7 +3786,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Corpse in the Monster\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3737,7 +3794,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Grave’s Decay\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3745,7 +3802,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Grave’s Decay\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3753,7 +3810,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Grave’s Decay\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3761,7 +3818,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Grave’s Decay\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3769,7 +3826,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Grave’s Decay\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3777,7 +3834,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Four Humors\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3785,7 +3842,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Four Humors\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3793,7 +3850,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Four Humors\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3801,7 +3858,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Four Humors\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3809,7 +3866,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Four Humors\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3817,7 +3874,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Sepulchre Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3825,7 +3882,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Sepulchre Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3833,7 +3890,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Sepulchre Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3841,7 +3898,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Sepulchre Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3849,7 +3906,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Sepulchre Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3857,7 +3914,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Vitreous Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3865,7 +3922,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Vitreous Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3873,7 +3930,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Vitreous Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3881,7 +3938,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Vitreous Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3889,15 +3946,18 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Vitreous Path\n{Keywords.PowerLevel}"
                 ],
+
+
+                //Thaumaturgy
                 [
                     traitID++,
                     "Elemental Strength (•)", //name
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Elemental Mastery\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3905,7 +3965,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Elemental Mastery\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3913,7 +3973,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Elemental Mastery\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3921,7 +3981,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Elemental Mastery\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3929,7 +3989,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Elemental Mastery\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3937,7 +3997,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Green Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3945,7 +4005,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Green Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3953,7 +4013,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Green Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3961,7 +4021,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Green Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3969,7 +4029,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Green Path\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3977,7 +4037,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3985,7 +4045,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -3993,7 +4053,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4001,7 +4061,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4009,7 +4069,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Hands of Destruction\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4017,7 +4077,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4025,7 +4085,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4033,7 +4093,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4041,7 +4101,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4049,7 +4109,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Movement of the Mind\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4057,7 +4117,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Neptune’s Might\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4065,7 +4125,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Neptune’s Might\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4073,7 +4133,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Neptune’s Might\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4081,7 +4141,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Neptune’s Might\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4089,7 +4149,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Neptune’s Might\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4097,7 +4157,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4105,7 +4165,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4113,7 +4173,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4121,7 +4181,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4129,7 +4189,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Lure of Flames\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4137,7 +4197,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4145,7 +4205,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4153,7 +4213,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4161,7 +4221,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4169,7 +4229,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Blood\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4177,7 +4237,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4185,7 +4245,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4193,7 +4253,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4201,7 +4261,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4209,7 +4269,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Conjuring\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4217,7 +4277,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Corruption\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4225,7 +4285,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Corruption\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4233,7 +4293,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Corruption\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4241,7 +4301,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Corruption\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4249,7 +4309,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Corruption\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4257,7 +4317,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Mars\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4265,7 +4325,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Mars\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4273,7 +4333,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Mars\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4281,7 +4341,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Mars\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4289,7 +4349,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Mars\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4297,7 +4357,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Technomancy\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4305,7 +4365,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Technomancy\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4313,7 +4373,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Technomancy\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4321,7 +4381,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Technomancy\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4329,7 +4389,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of Technomancy\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4337,7 +4397,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Father’s Vengeance\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4345,7 +4405,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Father’s Vengeance\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4353,7 +4413,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Father’s Vengeance\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4361,7 +4421,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Father’s Vengeance\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4369,7 +4429,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|The Path of the Father’s Vengeance\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4377,7 +4437,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Weather Control\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4385,7 +4445,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Weather Control\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4393,7 +4453,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Weather Control\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4401,7 +4461,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Weather Control\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4409,7 +4469,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|Weather Control\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4417,7 +4477,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|True Faith\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4425,7 +4485,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|True Faith\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4433,7 +4493,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|True Faith\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4441,7 +4501,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|True Faith\n{Keywords.PowerLevel}"
                 ],
                 [
                     traitID++,
@@ -4449,7 +4509,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     (int)TraitType.SelectableTrait,
                     (int)TraitCategory.SpecificPower,
                     (int)TraitSubCategory.Discipline,
-                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|TODO\n{Keywords.PowerLevel}"
+                    $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|TRAITMAX\n{Keywords.SubTrait}|True Faith\n{Keywords.PowerLevel}"
                 ],
 
                 //TODO: More Specific Powers (oh golly...)
