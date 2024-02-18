@@ -11,10 +11,9 @@ namespace VampireTheEverythingSheet.Server.Models
 
         private static Dictionary<TemplateKey, CharacterTemplate> GetAllCharacterTemplates()
         {
-            DataTable templateData = FakeDatabase.GetDatabase().GetCharacterTemplateData();
             Dictionary<TemplateKey, CharacterTemplate> output = [];
 
-            foreach (DataRow row in templateData.Rows)
+            foreach (DataRow row in FakeDatabase.GetDatabase().GetCharacterTemplateData().Rows)
             {
                 TemplateKey templateKey = (TemplateKey)row["TEMPLATE_ID"];
 

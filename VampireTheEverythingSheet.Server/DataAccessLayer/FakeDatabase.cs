@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using Microsoft.Extensions.ObjectPool;
+using System.Data;
+using System.Reflection.Metadata.Ecma335;
 using static VampireTheEverythingSheet.Server.DataAccessLayer.VtEConstants;
 
 namespace VampireTheEverythingSheet.Server.DataAccessLayer
@@ -75,46 +77,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             object?[][] rawTraits =
             [
                 #region Hidden Traits
-                [
-                    traitID++,
-                    "Trait Max", //name
-                    (int)TraitType.DerivedTrait,
-                    (int)TraitCategory.Hidden,
-                    (int)TraitSubCategory.None,
-                    $"{Keywords.IsVar}|TRAITMAX" //TODO: We're probably going to have to implement some kind of RPN math value engine for this... or hardcode it
-                ],
-                [
-                    traitID++,
-                    "Magic Max", //name
-                    (int)TraitType.DerivedTrait, //TODO: Constant? Int? Not sure what to do here. These will need special rules, but how? Should we just hardcode some?
-                    (int)TraitCategory.Hidden,
-                    (int)TraitSubCategory.None,
-                    $"{Keywords.IsVar}|MAGICMAX"
-                ],
-                [
-                    traitID++,
-                    "Background Max", //name
-                    (int)TraitType.DerivedTrait,
-                    (int)TraitCategory.Hidden,
-                    (int)TraitSubCategory.None,
-                    $"{Keywords.IsVar}|BACKGROUNDMAX"
-                ],
-                [
-                    traitID++,
-                    "Path Max", //name
-                    (int)TraitType.DerivedTrait,
-                    (int)TraitCategory.Hidden,
-                    (int)TraitSubCategory.None,
-                    $"{Keywords.IsVar}|PATHMAX"
-                ],
-                [
-                    traitID++,
-                    "Generation Max", //name
-                    (int)TraitType.DerivedTrait,
-                    (int)TraitCategory.Hidden,
-                    (int)TraitSubCategory.None,
-                    $"{Keywords.IsVar}|GENERATIONMAX"
-                ],
+                //TODO: Any?
                 #endregion
 
                 #region Top Traits
@@ -503,7 +466,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     $"{Keywords.AutoHide}\n{Keywords.MinMax}|0|5"
                 ],
 
-                //TODO: Physical Disciplines need to have specific powers implemented a special way if we want to have all derived ratings - maybe don't and have a MINUSCOUNT rule or something?
+                //TODO: Physical Disciplines/etc need to have specific powers implemented a special way if we want to have all derived ratings - maybe don't and have a MINUSCOUNT rule or something?
                 #region Disciplines
                 [
                     traitID++,
@@ -4618,11 +4581,12 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 [
                     traitID++,
                     "Path",
-                    (int)TraitType.PathTrait, //TODO: How do we implement this exactly? Will interact weirdly with Value and such. Probably need a "second value" or a "chosen name" or something.
+                    (int)TraitType.PathTrait,
                     (int)TraitCategory.Path,
                     (int)TraitSubCategory.None,
-                    $"{Keywords.MinMax}|0|PATHMAX\n{Keywords.PossibleValues}|" + string.Join("|", GetAllPaths()) //TODO: Trait for this, also put in mortal trait list
+                    $"{Keywords.MinMax}|0|PATHMAX"
                 ],
+                //TODO: Create a PathInfo table with the data we need to populate the other fields (Bearing etc) on the front end and handle logic on the back end
 
                 #region Vital Statistics
 
@@ -5082,6 +5046,32 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             }
 
             return output;
+        }
+
+        public DataTable GetPathData()
+        {
+            DataTable pathData = new()
+            {
+                Columns =
+                {
+                    new DataColumn("PATH_NAME", typeof(string)),
+                    new DataColumn("VIRTUES", typeof(string)),
+                    new DataColumn("BEARING", typeof(string)),
+                    new DataColumn("RESOLVE_PENALTY", typeof(int))
+                }
+            };
+
+            object[][] rawPathData =
+            [
+                //TODO
+            ];
+
+            foreach (object[] row in rawPathData)
+            {
+                pathData.Rows.Add(row);
+            }
+
+            return pathData;
         }
     }
 }

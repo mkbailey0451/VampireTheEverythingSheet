@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
 using VampireTheEverythingSheet.Server.DataAccessLayer;
 using static VampireTheEverythingSheet.Server.DataAccessLayer.VtEConstants;
@@ -125,6 +126,21 @@ namespace VampireTheEverythingSheet.Server.Models
         private readonly Dictionary<string, int> _variables = [];
 
         /// <summary>
+        /// A set of reserved variables that have special behavior in the system, and therefore are hardcoded on the backend.
+        /// We could create database-based rules for these, but the existing system is already close enough to the inner-platform effect
+        /// without going that far.
+        /// </summary>
+        public readonly ImmutableHashSet<string> ReservedVariables =
+        [
+            "TRAITMAX",
+            "MAGICMAX",
+            "BACKGROUNDMAX",
+            "PATHMAX",
+            "GENERATIONMAX",
+            "EFFECTIVEHUMANITY"
+        ];
+
+        /// <summary>
         /// If the supplied string is numeric, returns an int representation of it.
         /// If the supplied string is the name of a variable registered to the character, returns the current value of that variable.
         /// Otherwise, returns null.
@@ -135,6 +151,11 @@ namespace VampireTheEverythingSheet.Server.Models
             if(string.IsNullOrEmpty(variableName))
             {
                 return null;
+            }
+
+            if(ReservedVariables.Contains(variableName))
+            {
+                return GetReservedVariable(variableName);
             }
 
             //Since we do not accept numeric strings as variable names, we provide this automatic parsing functionality as a courtesy to calling methods.
@@ -189,30 +210,68 @@ namespace VampireTheEverythingSheet.Server.Models
 
         public int GetMaxSubTrait(string mainTrait)
         {
-            if (_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
+            if (!_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
             {
-                return
-                (
-                    from traitID in subTraits
-                    select Utils.TryGetInt(_traits[traitID].Value) ?? int.MinValue
-                ).Max();
+                throw new ArgumentException("Unrecognized main trait " + mainTrait + " in CountSubTraits.");
             }
-            return 0;
+
+            return
+            (
+                from traitID in subTraits
+                select Utils.TryGetInt(_traits[traitID].Value) ?? int.MinValue
+            ).Max();
         }
 
         public int CountSubTraits(string mainTrait)
         {
-            if(_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
+            int count = 0;
+
+            if(!_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
             {
-                return subTraits.Count;
+                throw new ArgumentException("Unrecognized main trait " + mainTrait + " in CountSubTraits.");
             }
-            return 0;
+
+            //we only want to return the count of selected subtraits (or in other words, traits with a "truthy" kind of value)
+            foreach(int traitID in subTraits)
+            {
+                object val = _traits[traitID].Value;
+
+                if(val is bool boolVal)
+                {
+                    if(boolVal)
+                    {
+                        count++;
+                    }
+                    continue;
+                }
+                if(Utils.TryGetInt(val, out int intVal))
+                {
+                    if(intVal > 0)
+                    {
+                        count++;
+                    }
+                    continue;
+                }
+                if(val is string strVal)
+                {
+                    if(!string.IsNullOrEmpty(strVal))
+                    {
+                        count++;
+                    }
+                    continue;
+                }
+                //TODO: I think Path will have some unique logic here, but we'll probably never use it
+
+                throw new ArgumentException("Unrecognized datatype of val for trait " + _traits[traitID].Name + ": " + _traits[traitID].Value.GetType());
+            }
+
+            return count;
         }
 
         public void RegisterVariable(string variableName, Trait associatedTrait)
         {
             //we do not accept empty or numeric variable names
-            if(variableName == "" || int.TryParse(variableName, out _))
+            if(variableName == "" || int.TryParse(variableName, out _) || ReservedVariables.Contains(variableName))
             {
                 return;
             }
@@ -245,8 +304,8 @@ namespace VampireTheEverythingSheet.Server.Models
             get
             {
                 //There's two ways to do this - the LINQ way and the foreach-if way - and I'm not sure which I like better or which performs better.
-                //I decided to mix it up for the demo project, to demonstrate that I can do both as much as anything else.
-                foreach(Trait trait in _traits.Values)
+                //I decided to mix it up for the demo project, as much to demonstrate that I can do both as anything else.
+                foreach (Trait trait in _traits.Values)
                 {
                     if(trait.Category == TraitCategory.TopText)
                     {
@@ -333,6 +392,31 @@ namespace VampireTheEverythingSheet.Server.Models
                     where trait.Category == TraitCategory.Skill
                         && trait.SubCategory == TraitSubCategory.Mental
                     select trait;
+            }
+        }
+
+        private object? GetReservedVariable(string variableName)
+        {
+            switch (variableName)
+            {
+                /* TODO: All of this - we might actually end up with real frontend DDLs that interact with some of this 
+                 * (stuff like "Lowest Generation Diablerized", "Advanced Backgrounds Allowed", "Heart-Hunts Completed", or "Golconda Achieved")
+                 * and some of these might have functions
+                 */
+                case "TRAITMAX":
+                    return 5;
+                case "MAGICMAX":
+                    return 5;
+                case "BACKGROUNDMAX":
+                    return 5;
+                case "PATHMAX":
+                    return 10;
+                case "GENERATIONMAX":
+                    return 5;
+                case "EFFECTIVEHUMANITY":
+                    return 10;
+                default:
+                    throw new NotImplementedException();
             }
         }
     }

@@ -229,6 +229,33 @@ namespace VampireTheEverythingSheet.Server.Models
 
         public bool AutoHide { get; private set; }
 
+        //TODO: Document ALL THE THINGS
+
+        private string _auxValue = "";
+
+        /// <summary>
+        /// This property represents the "auxillary" value of certain Traits.
+        /// The semantic meaning of this is different for each Trait.
+        /// For Backgrounds, this is the Background Details field.
+        /// For Attributes and Abilities, this is the associated specialty.
+        /// For Paths, this is the name of the Path, as opposed to the numeric value of the Path score.
+        /// </summary>
+        public string AuxillaryValue
+        {
+            get
+            {
+                return _auxValue;
+            }
+            set
+            {
+                if(Type == TraitType.PathTrait && !MoralPath.AllPaths.ContainsKey(value))
+                {
+                    return;
+                }
+                _auxValue = value;
+            }
+        }
+
         #endregion
 
         #region Private members

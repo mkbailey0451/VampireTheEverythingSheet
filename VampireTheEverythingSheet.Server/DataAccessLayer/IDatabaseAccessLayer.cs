@@ -15,5 +15,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
 
         public DataTable GetCharacterTemplateData();
 
+        public DataTable GetPathData();
+
     }
 }
