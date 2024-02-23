@@ -14,7 +14,12 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
     /// </summary>
     public class FakeDatabase : IDatabaseAccessLayer
     {
-        private static readonly FakeDatabase _db = new();
+        #region Public members
+
+        /// <summary>
+        /// Returns the singleton instance of this database.
+        /// </summary>
+        /// <returns></returns>
         public static IDatabaseAccessLayer GetDatabase()
         {
             return _db;
@@ -22,22 +27,225 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
 
         public DataTable GetTraitTemplateData()
         {
-            //Technically, we should do a deep copy here to avoid mutability concerns, but this *is* a fake database anyway
+            //Technically, we should do a deep copy here (and elsewhere in this class) to avoid mutability concerns, but this *is* a fake database anyway
             return _traits;
         }
 
-        readonly DataTable _templates = new()
+        public DataTable GetCharacterTemplateData()
         {
-            Columns =
+            //TODO: Refactor because we're doing the trait template thing now
+            //TODO: Revise this to reflect the DATA field below
+            /*
+             * This would normally be the result of a JOIN between the following tables:
+             * TEMPLATES - would contain primary keys matching the Constants.TemplateKey enum, the name of the template, and probably nothing else
+             * TEMPLATE_X_TRAIT - crosswalk table matching templates to their owned traits (primary key to primary key via foreign keys, with the TEMPLATE_X_TRAIT table having a PK of both keys)
+             * TRAITS - table listing the ID, name, type (integer, free text, etc as enum values), category (top text, attribute, specific power, etc as enum values), subcategory (if applicable - 
+             * things like physical/mental/social or Discipline/Lore/Tapestry - also as enum values), and data (whose meaning varies according to the other variables) of the trait.
+             * 
+             * The tables in this class are mainly meant to simulate that functionality.
+             * */
+            //TODO: Note archetypes and such above - probably from a function or stored proc
+            DataTable output = new()
+            {
+                Columns =
+                {
+                    new DataColumn("TEMPLATE_ID", typeof(int)),
+                    new DataColumn("TEMPLATE_NAME", typeof(string)),
+                    new DataColumn("TRAIT_ID", typeof(int)),
+                }
+            };
+
+            var rows =
+                from templateRow in _templates.Rows.Cast<DataRow>()
+                join templateXTraitRow in _template_x_trait.Rows.Cast<DataRow>()
+                    on templateRow["TEMPLATE_ID"] equals templateXTraitRow["TEMPLATE_ID"]
+                orderby templateRow["TEMPLATE_ID"], templateXTraitRow["TRAIT_ID"]
+                select new object[]
+                {
+                    templateRow["TEMPLATE_ID"],
+                    templateRow["TEMPLATE_NAME"],
+                    templateXTraitRow["TRAIT_ID"],
+                };
+
+            foreach (object[] row in rows)
+            {
+                output.Rows.Add(row);
+            }
+
+            return output;
+        }
+
+        /// <summary>
+        /// Returns a DataTable representing the moral Paths a character may follow.
+        /// </summary>
+        public DataTable GetPathData()
+        {
+            return _paths;
+        }
+
+        #endregion
+
+        #region Private members
+
+        /// <summary>
+        /// The singleton instance of this database.
+        /// </summary>
+        private static readonly FakeDatabase _db = new();
+
+        /// <summary>
+        /// Since this database is a singleton, we naturally want its constructor to be private.
+        /// </summary>
+        private FakeDatabase() { }
+
+        /// <summary>
+        /// A Dictionary mapping a trait name to all trait IDs which have that name.
+        /// In most cases, this is a one-to-one mapping, but some traits share a name 
+        /// (such as the Generation Background and its derived top trait, or msgic paths belonging to multiple main Disciplines).
+        /// </summary>
+        private static readonly Dictionary<string, List<int>> _traitIDsByName = [];
+
+        /// <summary>
+        /// A DataTable emulating a crosswalk table mapping template IDs to the IDs of their respective traits.
+        /// </summary>
+        private static readonly DataTable _template_x_trait = BuildTemplateXTrait();
+        private static DataTable BuildTemplateXTrait()
+        {
+            DataTable template_x_trait = new()
+            {
+                Columns =
+                {
+                    new DataColumn("TEMPLATE_ID", typeof(int)),
+                    new DataColumn("TRAIT_ID", typeof(int)),
+                }
+            };
+
+            #region Build template_x_trait
+            string[] mortalTraitNames = [
+                "Trait Max",
+                "Magic Max",
+                "Background Max",
+                "Path Max",
+
+                "Name",
+                "Player",
+                "Chronicle",
+                "Nature",
+                "Demeanor",
+                "Concept",
+
+                "Strength",
+                "Dexterity",
+                "Stamina",
+
+                "Charisma",
+                "Manipulation",
+                "Composure",
+
+                "Intelligence",
+                "Wits",
+                "Resolve",
+
+                "Athletics",
+                "Brawl",
+                "Drive",
+                "Firearms",
+                "Larceny",
+                "Stealth",
+                "Survival",
+                "Weaponry",
+
+                "Animal Ken",
+                "Empathy",
+                "Expression",
+                "Intimidation",
+                "Persuasion",
+                "Socialize",
+                "Streetwise",
+                "Subterfuge",
+
+                "Academics",
+                "Computer",
+                "Crafts",
+                "Investigation",
+                "Medicine",
+                "Occult",
+                "Politics",
+                "Science",
+
+                "True Faith",
+
+                "Allies",
+                "Alternate Identity",
+                "Contacts",
+                "Fame",
+                "Influence",
+                "Mentor",
+                "Resources",
+                "Retainers",
+
+                "Size",
+                "Health",
+                "Willpower",
+                "Defense",
+                "Speed",
+                "Run Speed",
+                "Initiative",
+                "Soak",
+
+                "Path"
+
+                //TODO: Weapons, Physical Description
+            ];
+
+            foreach (string traitName in mortalTraitNames)
+            {
+                foreach (int id in _traitIDsByName[traitName])
+                {
+                    template_x_trait.Rows.Add((int)TemplateKey.Mortal, id);
+                }
+            }
+
+            #endregion
+
+            return template_x_trait;
+        }
+
+        /// <summary>
+        /// A DataTable emulating a table of templates.
+        /// </summary>
+        private static readonly DataTable _templates = BuildTemplateTable();
+        private static DataTable BuildTemplateTable()
+        {
+            DataTable templates = new()
+            {
+                Columns =
                 {
                     new DataColumn("TEMPLATE_ID", typeof(int)),
                     new DataColumn("TEMPLATE_NAME", typeof(string)),
                 }
-        };
+            };
 
-        readonly DataTable _traits = new()
+            foreach (TemplateKey key in Enum.GetValues(typeof(TemplateKey)))
+            {
+                templates.Rows.Add(new object[]
+                {
+                    (int)key,
+                    key.ToString()
+                });
+            }
+
+            return templates;
+        }
+
+        /// <summary>
+        /// A DataTable emulating a table of traits.
+        /// </summary>
+        private static readonly DataTable _traits = BuildTraitTable();
+        private static DataTable BuildTraitTable()
         {
-            Columns =
+            DataTable traits = new()
+            {
+                Columns =
                 {
                     new DataColumn("TRAIT_ID", typeof(int)),
                     new DataColumn("TRAIT_NAME", typeof(string)),
@@ -46,33 +254,10 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     new DataColumn("TRAIT_SUBCATEGORY", typeof(int)),
                     new DataColumn("TRAIT_DATA", typeof(string)),
                 }
-        };
+            };
 
-        readonly DataTable _template_x_trait = new()
-        {
-            Columns =
-                {
-                    new DataColumn("TEMPLATE_ID", typeof(int)),
-                    new DataColumn("TRAIT_ID", typeof(int)),
-                }
-        };
-
-        readonly Dictionary<string, List<int>> _traitIDsByName;
-
-        private FakeDatabase()
-        {
-            foreach (TemplateKey key in Enum.GetValues(typeof(TemplateKey)))
-            {
-                _templates.Rows.Add(new object[]
-                {
-                    (int)key,
-                    key.ToString()
-                });
-            }
-
-            //TODO: We could separate out the build of each table into its own function - a bit pointless maybe, but it is Best Practices(TM)
             #region Build traits
-            var traitID = 0;
+            int traitID = 0;
             //this is not exactly the best way to do this, but again, this is a fake database and not really how we'd do any of this anyway
             object?[][] rawTraits =
             [
@@ -4668,6 +4853,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 //TODO: Other Traits, Merits and Flaws, Weapons, Physical Description
 
             ];
+            #endregion
 
             //template for the above:
             /*
@@ -4683,12 +4869,10 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
 
             foreach (object?[] row in rawTraits)
             {
-                _traits.Rows.Add(row);
+                traits.Rows.Add(row);
             }
 
-            _traitIDsByName = new Dictionary<string, List<int>>(_traits.Rows.Count);
-
-            foreach (DataRow row in _traits.Rows)
+            foreach (DataRow row in traits.Rows)
             {
                 //we don't really have a way to log problems with this, but it should also never happen. Again, in a real project, we'd try/catch and log the error to a log file or the database,
                 //but since we're essentially operating on dummy data, there's no real need.
@@ -4708,99 +4892,39 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     _traitIDsByName[key] = [id];
                 }
             }
-            #endregion
 
-            #region Build template_x_trait
-            string[] mortalTraitNames = [
-                "Trait Max",
-                "Magic Max",
-                "Background Max",
-                "Path Max",
+            return traits;
+        }
 
-                "Name",
-                "Player",
-                "Chronicle",
-                "Nature",
-                "Demeanor",
-                "Concept",
+        private static readonly DataTable _paths = BuildPathTable();
+        private static DataTable BuildPathTable()
+        {
+            DataTable pathData = new()
+            {
+                Columns =
+                {
+                    new DataColumn("PATH_NAME", typeof(string)),
+                    new DataColumn("VIRTUES", typeof(string)),
+                    new DataColumn("BEARING", typeof(string)),
+                    new DataColumn("RESOLVE_PENALTY", typeof(int))
+                }
+            };
 
-                "Strength",
-                "Dexterity",
-                "Stamina",
-
-                "Charisma",
-                "Manipulation",
-                "Composure",
-
-                "Intelligence",
-                "Wits",
-                "Resolve",
-
-                "Athletics",
-                "Brawl",
-                "Drive",
-                "Firearms",
-                "Larceny",
-                "Stealth",
-                "Survival",
-                "Weaponry",
-
-                "Animal Ken",
-                "Empathy",
-                "Expression",
-                "Intimidation",
-                "Persuasion",
-                "Socialize",
-                "Streetwise",
-                "Subterfuge",
-
-                "Academics",
-                "Computer",
-                "Crafts",
-                "Investigation",
-                "Medicine",
-                "Occult",
-                "Politics",
-                "Science",
-
-                "True Faith",
-
-                "Allies",
-                "Alternate Identity",
-                "Contacts",
-                "Fame",
-                "Influence",
-                "Mentor",
-                "Resources",
-                "Retainers",
-
-                "Size",
-                "Health",
-                "Willpower",
-                "Defense",
-                "Speed",
-                "Run Speed",
-                "Initiative",
-                "Soak",
-
-                "Path"
-
-                //TODO: Weapons, Physical Description
+            object[][] rawPathData =
+            [
+                //TODO
             ];
 
-            foreach (string traitName in mortalTraitNames)
+            foreach (object[] row in rawPathData)
             {
-                foreach(int id in _traitIDsByName[traitName])
-                {
-                    _template_x_trait.Rows.Add((int)TemplateKey.Mortal, id);
-                }
+                pathData.Rows.Add(row);
             }
 
-            #endregion
+            return pathData;
         }
 
         #region Pseudo reference tables
-        private IEnumerable<string> GetAllArchetypes()
+        private static IEnumerable<string> GetAllArchetypes()
         {
             return [
                 "Architect",
@@ -4847,7 +4971,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
-        private IEnumerable<string> GetAllClans()
+        private static IEnumerable<string> GetAllClans()
         {
             return [
                 "Assamite (Hunter)",
@@ -4883,7 +5007,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
-        private IEnumerable<string> GetAllBroods()
+        private static IEnumerable<string> GetAllBroods()
         {
             return [
                 "Kalebite",
@@ -4908,7 +5032,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
-        private IEnumerable<string> GetBroodBreedSwitch()
+        private static IEnumerable<string> GetBroodBreedSwitch()
         {
             return [
                 "Kalebite", "Lycanth",
@@ -4933,7 +5057,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
-        private IEnumerable<string> GetAllBreeds()
+        private static IEnumerable<string> GetAllBreeds()
         {
             return [
                 "Anthrope",
@@ -4942,7 +5066,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
-        private IEnumerable<string> GetAllTribes()
+        private static IEnumerable<string> GetAllTribes()
         {
             return [
                 "Ash Walkers",
@@ -4964,7 +5088,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
-        private IEnumerable<string> GetAllAuspices()
+        private static IEnumerable<string> GetAllAuspices()
         {
             return [
                 "Scurra",
@@ -4975,7 +5099,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             ];
         }
 
-        private IEnumerable<string> GetAllPaths()
+        private static IEnumerable<string> GetAllPaths()
         {
             //TODO: Correlatives - Path Virtues	Resolve Penalty	Bearing
             return [
@@ -5003,75 +5127,8 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
         }
         #endregion
 
-        public DataTable GetCharacterTemplateData()
-        {
-            //TODO: Refactor because we're doing the trait template thing now
-            //TODO: Revise this to reflect the DATA field below
-            /*
-             * This would normally be the result of a JOIN between the following tables:
-             * TEMPLATES - would contain primary keys matching the Constants.TemplateKey enum, the name of the template, and probably nothing else
-             * TEMPLATE_X_TRAIT - crosswalk table matching templates to their owned traits (primary key to primary key via foreign keys, with the TEMPLATE_X_TRAIT table having a PK of both keys)
-             * TRAITS - table listing the ID, name, type (integer, free text, etc as enum values), category (top text, attribute, specific power, etc as enum values), subcategory (if applicable - 
-             * things like physical/mental/social or Discipline/Lore/Tapestry - also as enum values), and data (whose meaning varies according to the other variables) of the trait.
-             * 
-             * The tables in this class are mainly meant to simulate that functionality.
-             * */
-            //TODO: Note archetypes and such above - probably from a function or stored proc
-            DataTable output = new()
-            {
-                Columns =
-                {
-                    new DataColumn("TEMPLATE_ID", typeof(int)),
-                    new DataColumn("TEMPLATE_NAME", typeof(string)),
 
-                    new DataColumn("TRAIT_ID", typeof(int)),
-                }
-            };
 
-            var rows =
-                from templateRow in _templates.Rows.Cast<DataRow>()
-                join templateXTraitRow in _template_x_trait.Rows.Cast<DataRow>()
-                    on templateRow["TEMPLATE_ID"] equals templateXTraitRow["TEMPLATE_ID"]
-                orderby templateRow["TEMPLATE_ID"], templateXTraitRow["TRAIT_ID"]
-                select new object[]
-                {
-                    templateRow["TEMPLATE_ID"],
-                    templateRow["TEMPLATE_NAME"],
-                    templateXTraitRow["TRAIT_ID"],
-                };
-            
-            foreach (object[] row in rows)
-            {
-                output.Rows.Add(row);
-            }
-
-            return output;
-        }
-
-        public DataTable GetPathData()
-        {
-            DataTable pathData = new()
-            {
-                Columns =
-                {
-                    new DataColumn("PATH_NAME", typeof(string)),
-                    new DataColumn("VIRTUES", typeof(string)),
-                    new DataColumn("BEARING", typeof(string)),
-                    new DataColumn("RESOLVE_PENALTY", typeof(int))
-                }
-            };
-
-            object[][] rawPathData =
-            [
-                //TODO
-            ];
-
-            foreach (object[] row in rawPathData)
-            {
-                pathData.Rows.Add(row);
-            }
-
-            return pathData;
-        }
+        #endregion
     }
 }
