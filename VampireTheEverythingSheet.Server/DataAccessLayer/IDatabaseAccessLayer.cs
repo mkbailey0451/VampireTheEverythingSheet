@@ -11,8 +11,14 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
         /// </summary>
         public abstract static IDatabaseAccessLayer GetDatabase();
 
-        public DataTable GetTraitTemplateData();
+        /// <summary>
+        /// Returns a DataTable representing the TRAIT table in the database.
+        /// </summary>
+        public DataTable GetTraitData();
 
+        /// <summary>
+        /// Returns a DataTable representing the mapping of character templates to traits in the database.
+        /// </summary>
         public DataTable GetCharacterTemplateData();
 
         public DataTable GetPathData();

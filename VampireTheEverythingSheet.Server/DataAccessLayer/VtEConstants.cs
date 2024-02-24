@@ -73,6 +73,7 @@
         /// </summary>
         public enum TemplateKey
         {
+            //This enum and others like it are given specific numbers to emulate the idea that these should be static and reflected in the database.
             Mortal = 0,
             Kindred = 1,
             Kalebite = 2,
@@ -105,37 +106,85 @@
             /// The trait also displays certain information pertinent to the Path.
             /// </summary>
             PathTrait = 3, //TODO: Hierarchy of Sins?
-
-            MeritFlawTrait = 4, //TODO: Is this the same as SelectableTrait, or do we need SpecificPowerTrait, or what?
             
-            //TODO document more
-            WeaponTrait = 5,
-            DerivedTrait = 6,
-            DerivedDropdownTrait = 7,
-            SelectableTrait = 8, //TODO: Implement business rules
+            /// <summary>
+            /// A WeaponTrait represents a weapon that the character can select to display in the Weapons section.
+            /// The mere presence of one of these traits does not change the appearance of the UI except to add it to the
+            /// dropdown menu for weapon selection.
+            /// </summary>
+            WeaponTrait = 4, //TODO: Conditional weapons like Arms of the Abyss
+
+            /// <summary>
+            /// A DerivedTrait represents a trait that is derived from other values, and therefore does not have a selectable
+            /// or editable component.
+            /// </summary>
+            DerivedTrait = 5,
+
+            MeritFlawTrait = 6, //TODO: Is this the same as SelectableTrait, or do we need SpecificPowerTrait, or what?
+            SelectableTrait = 7, //TODO: Implement business rules
         };
 
+        /// <summary>
+        /// This enum defines the different categories of traits. These are used to determine where in the frontend page flow they should appear.
+        /// </summary>
         public enum TraitCategory
         {
+            /// <summary>
+            /// A TopText trait is a field that goes at the top of the character sheet - Name, Chronicle, Clan, Breed, etc. Not all of these are actual
+            /// text fields, but they belong to the "top text" of the character sheet.
+            /// </summary>
             TopText = 0,
+
             Attribute = 1,
             Skill = 2,
 
-            Progression = 3, //Rage, Gnosis, Arete, Wyrd
+            /// <summary>
+            /// A Progression trait is used to measure a character's general power. Not all templates have one of these. Examples include Rage, Gnosis,
+            /// Arete, and Wyrd.
+            /// </summary>
+            Progression = 3,
 
+            /// <summary>
+            /// Power traits represent the integer-value power traits, such as Auspex or Beastcraft. Specific powers of these traits, such as Aura Perception
+            /// or Scent of Death, should be implemented as SpecificPower traits instead.
+            /// </summary>
             Power = 4,
+
+            /// <summary>
+            /// SpecificPower traits represent specific powers belonging to Power traits - Power traits being Disciplines, Lores, and the like. Specific powers 
+            /// thus include things like Aura Perception and Scent of Death.
+            /// </summary>
             SpecificPower = 5,
+
             Background = 6,
-            VitalStatistic = 7,
+
+            /// <summary>
+            /// Vital Statistics are derived values describing the character's capabilities. These include Size, Speed, Health, Initiative, and so on.
+            /// </summary>
+            VitalStatistic = 7, //TODO: Break out Willpower into its own thing? Progression maybe? And add the "boxes below" dealie?
+
             MeritFlaw = 8,
-            Path = 9,
+            MoralPath = 9,
             Weapon = 10,
+
+            /// <summary>
+            /// Physical Description Bits are small aspects of the physical description of a character, such as their age, eye color, hair color, or fur color.
+            /// </summary>
             PhysicalDescriptionBit = 11,
-            Hidden = 12,
+
+            /// <summary>
+            /// Hidden traits do not appear on the UI at all.
+            /// </summary>
+            Hidden = 12, //TODO is this used?
         };
 
+        /// <summary>
+        /// The subcategory of a trait helps determine where in the page flow it should appear, as well as certain rules that may apply to it. Most of these are 
+        /// self-explanatory as they are defined in the rules of the game.
+        /// </summary>
         public enum TraitSubCategory
         {
+            //TODO: trait ID may render this unnecessary for some areas
             None = -1,
 
             Physical = 0,
@@ -149,16 +198,48 @@
             Knit = 7,
             Arcanum = 8,
 
-            NaturalWeapon = 9,
+            /// <summary>
+            /// Natural weapons are weapons that will automatically appear on the sheet when the character qualifies for them. They do not need to be selected.
+            /// </summary>
+            NaturalWeapon = 9, //TODO: Business rules on this - need some kind of keyword-condition thing
+
+            /// <summary>
+            /// Selectable weapons are weapons that may be selected to appear on the character sheet.
+            /// </summary>
             SelectableWeapon = 10,
         };
 
+        /// <summary>
+        /// This enum describes the method by which a trait's value is determined.
+        /// </summary>
         public enum TraitValueDerivation
         {
+            /// <summary>
+            /// The Standard derivation indicates that a Trait's value is simply stored and returned according to normal validation rules.
+            /// </summary>
             Standard,
+
+            /// <summary>
+            /// The DerivedSum derivation indicates that a Trait's value is the sum of certain numbers and/or variables.
+            /// </summary>
             DerivedSum,
+
+            /// <summary>
+            /// The DerivedOptions derivation indicates that certain values of the trait should be displayed to the user differently than they are 
+            /// stored on the backend, according to certain internal rules. This only affects the display value, and not the actual value.
+            /// </summary>
             DerivedOptions,
+
+            /// <summary>
+            /// The MainTraitMax derivation indicates that this is a main trait that takes the value of its highest subtrait. 
+            /// See the Utils.Keywords.MainTraitMax, Utils.Keywords.MainTraitCount, and Utils.Keywords.SubTrait documentation for more details.
+            /// </summary>
             MainTraitMax,
+
+            /// <summary>
+            /// The MainTraitCount derivation indicates that this is a main trait that takes the value of the count of its selected subtraits. 
+            /// See the Utils.Keywords.MainTraitMax, Utils.Keywords.MainTraitCount, and Utils.Keywords.SubTrait documentation for more details.
+            /// </summary>
             MainTraitCount
         }
     }

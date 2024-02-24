@@ -10,6 +10,8 @@ namespace VampireTheEverythingSheet.Server.Models
         //TODO: Do we need session memoization for these objects? Probably. Unless we want to simulate pulling from the DB every time?
         public static ReadOnlyDictionary<string, MoralPath> AllPaths { get; } = GetAllPaths();
 
+        //TODO: Unique ID? Shouldn't be necessary, since oaths all have unique names, but is it more Best Practicey(TM)?
+
         /// <summary>
         /// The name of this Path.
         /// </summary>
@@ -31,6 +33,20 @@ namespace VampireTheEverythingSheet.Server.Models
         /// </summary>
         public int ResolvePenalty { get; private set; }
 
+        /// <summary>
+        /// An ordered, enumerated list of example sins for this Path, listed by level and starting from the least severe.
+        /// </summary>
+        public IEnumerable<string> HierarchyOfSins
+        {
+            get
+            {
+                foreach(string sin in _hierarchyOfSins)
+                {
+                    yield return sin; //TODO: This will need Oath logic
+                }
+            }
+        }
+
         private static ReadOnlyDictionary<string, MoralPath> GetAllPaths()
         {
             Dictionary<string, MoralPath> output = [];
@@ -41,12 +57,24 @@ namespace VampireTheEverythingSheet.Server.Models
             return new ReadOnlyDictionary<string, MoralPath>(output);
         }
 
+        private List<string> _hierarchyOfSins;
+
         private MoralPath(DataRow row)
         {
             Name = row["PATH_NAME"].ToString() ?? "";
             Virtues = row["VIRTUES"].ToString() ?? "";
             Bearing = row["BEARING"].ToString() ?? "";
-            ResolvePenalty = Utils.TryGetInt(row["RESOLVE_PENALTY"]) ?? 0;
+            _hierarchyOfSins = new( (row["HIERARCHY_OF_SINS"].ToString() ?? "").Split('\n') );
+
+            ResolvePenalty = 0;
+            if (!Virtues.ToLower().Contains("conscience"))
+            {
+                ResolvePenalty--;
+            }
+            if (!Virtues.ToLower().Contains("self-control"))
+            {
+                ResolvePenalty--;
+            }
         }
     }
 }

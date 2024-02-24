@@ -25,7 +25,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
             return _db;
         }
 
-        public DataTable GetTraitTemplateData()
+        public DataTable GetTraitData()
         {
             //Technically, we should do a deep copy here (and elsewhere in this class) to avoid mutability concerns, but this *is* a fake database anyway
             return _traits;
@@ -344,7 +344,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 [
                     traitID++,
                     "Breed", //name
-                    (int)TraitType.DerivedDropdownTrait,
+                    (int)TraitType.DropdownTrait,
                     (int)TraitCategory.TopText,
                     (int)TraitSubCategory.None,
                     $"{Keywords.DerivedOption}|[animal]|BROOD|" + string.Join("|", GetBroodBreedSwitch()) + "\n{Keywords.PossibleValues}|" + string.Join("|", GetAllBreeds())
@@ -4767,7 +4767,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     traitID++,
                     "Path",
                     (int)TraitType.PathTrait,
-                    (int)TraitCategory.Path,
+                    (int)TraitCategory.MoralPath,
                     (int)TraitSubCategory.None,
                     $"{Keywords.MinMax}|0|PATHMAX"
                 ],
@@ -4867,11 +4867,13 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 ],
              */
 
+            //build the actual datatable rows
             foreach (object?[] row in rawTraits)
             {
                 traits.Rows.Add(row);
             }
 
+            //build _traitIDsByName collection
             foreach (DataRow row in traits.Rows)
             {
                 //we don't really have a way to log problems with this, but it should also never happen. Again, in a real project, we'd try/catch and log the error to a log file or the database,
@@ -4906,14 +4908,151 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                     new DataColumn("PATH_NAME", typeof(string)),
                     new DataColumn("VIRTUES", typeof(string)),
                     new DataColumn("BEARING", typeof(string)),
-                    new DataColumn("RESOLVE_PENALTY", typeof(int))
+                    new DataColumn("HIERARCHY_OF_SINS", typeof(int)),
                 }
             };
 
+            #region Build path data
             object[][] rawPathData =
             [
-                //TODO
+                [
+                    "Humanity",
+                    "Conscience and Self-Control",
+                    "Humanity",
+                    string.Join('\n',
+                        "Selfish acts.",
+                        "Injury to another (in Frenzy or otherwise, except in self-defense, etc).",
+                        "Intentional injury to another (except self-defense, consensual, etc).",
+                        "Theft.",
+                        "Accidental violation (drinking a vessel dry out of starvation).",
+                        "Intentional property damage.",
+                        "Impassioned violation (manslaughter, killing a vessel in Frenzy).",
+                        "Planned violation (outright murder, savored exsanguination).",
+                        "Casual violation (thoughtless killing, feeding past satiation).",
+                        "Gleeful or “creative” violation (let’s not go there)."
+                    )
+                ],
+                [
+                    "Assamia",
+                    "Conviction and Self-Control",
+                    "Resolve",
+                    string.Join('\n',
+                        "Feeding on a mortal without consent",
+                        "Breaking a word of honor to a Clanmate",
+                        "Refusing to offer a non-Assamite an opportunity to convert",
+                        "Failing to take an opportunity to destroy an apostate from the Clan",
+                        "Succumbing to frenzy",
+                        "Wronging a mortal (such as by injury or theft), except by feeding",
+                        "Killing a mortal in Frenzy, failing to take an opportunity to harm a wicked Kindred",
+                        "Refusal to further the cause of Assamia, even when doing so is safe",
+                        "Outright murder of a mortal",
+                        "Acting against another Assamite, casual murder"
+                    )
+                ],
+                [
+                    "The Ophidian Path",
+                    "Conviction and Self-Control",
+                    "Devotion",
+                    string.Join('\n',
+                        "Pursuing one’s own indulgences instead of another’s",
+                        "Refusing to aid another follower of the Path",
+                        "Aiding a vampire in Golconda or anyone with True Faith",
+                        "Failing to observe Apophidian religious ritual",
+                        "Failing to undermine the current social order in favor of the Apophidians",
+                        "Failing to do whatever is necessary to corrupt another",
+                        "Failing to pursue arcane knowledge",
+                        "Obstructing another Apophidian’s efforts, outright murder",
+                        "Failing to take advantage of another’s weakness, casual killing",
+                        "Refusing to aid in Set’s resurrection, gleeful killing"
+                    )
+                ],
+                [
+                    "The Path of the Archivist",
+                    "Conviction and Self-Control",
+                    "Sagacity",
+                    string.Join('\n',
+                        "Refusing to share knowledge with another",
+                        "Refusing to pursue existing knowledge, going hungry",
+                        "Refusing to research and expand the horizons of knowledge",
+                        "Refusing to maintain a storehouse of knowledge",
+                        "Acting with negligence in a library or other storehouse of knowledge",
+                        "Burning a book (or destroying any other store of knowledge) or Frenzying for any reason other than to research something",
+                        "Killing in a Frenzy, killing a knowledgeable person",
+                        "Outright murder, killing a scholar or scientist",
+                        "Casual violation, killing a fellow Archivist",
+                        "Gleeful or creative violation, allowing knowledge to be permanently destroyed"
+                    )
+                ],
+                [
+                    "The Path of Bones",
+                    "Conviction and Self-Control",
+                    "Silence",
+                    string.Join('\n',
+                        "Showing a fear of death",
+                        "Failing to study an occurrence of death",
+                        "Causing the suffering of another for no personal gain",
+                        "Postponing feeding when hungry",
+                        "Succumbing to frenzy",
+                        "Showing concern for another’s well-being",
+                        "Accidental killing (such as in Frenzy), making a decision based on emotion rather than logic",
+                        "Outright murder, inconveniencing oneself for another’s benefit",
+                        "Casual murder, preventing a death for personal gain",
+                        "Gleeful or creative violation, preventing a death for no personal gain"
+                    )
+                ],
+                [
+                    "The Path of Caine",
+                    "Conviction and Instinct",
+                    "Faith",
+                    string.Join('\n',
+                        "Failing to engage in research or study each night, regardless of circumstances",
+                        "Failing to instruct other vampires in the Path of Caine",
+                        "Befriending or co-existing with mortals",
+                        "Showing disrespect to other students of Caine",
+                        "Failing to ride the wave in frenzy",
+                        "Succumbing to Rötschreck",
+                        "Aiding a “humane” vampire, killing in a Frenzy",
+                        "Failing to regularly test the limits of abilities and Disciplines, outright murder",
+                        "Failing to pursue lore about vampirism when the opportunity arises, casual murder",
+                        "Denying vampiric needs (by refusing to feed, showing compassion, or failing to learn about one’s vampiric abilities), gleeful or creative violation"
+                    )
+                ],
+                [//TODO
+                    "Humanity",
+                    "Conscience and Self-Control",
+                    "Humane",
+                    string.Join('\n',
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    )
+                ],
+                [
+                    "Humanity",
+                    "Conscience and Self-Control",
+                    "Humane",
+                    string.Join('\n',
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    )
+                ],
             ];
+            #endregion
 
             foreach (object[] row in rawPathData)
             {
@@ -5098,36 +5237,7 @@ namespace VampireTheEverythingSheet.Server.DataAccessLayer
                 "Myrmidon",
             ];
         }
-
-        private static IEnumerable<string> GetAllPaths()
-        {
-            //TODO: Correlatives - Path Virtues	Resolve Penalty	Bearing
-            return [
-                "Humanity",
-                "The Path of the Archivist",
-                "The Path of Blood",
-                "The Path of Bones",
-                "The Path of Caine",
-                "The Path of Cathari",
-                "The Path of the Feral Heart",
-                "The Path of the Fox",
-                "The Path of Harmony",
-                "The Path of Honorable Accord",
-                "The Path of Indulgence",
-                "The Path of Lilith",
-                "The Path of Metamorphosis",
-                "The Path of Night",
-                "The Path of Power and the Inner Voice",
-                "The Path of Typhon",
-                "The Rising Path",
-                "Via Angeli",
-                "Via Caeli",
-                "Via Vir-Fortis"
-            ];
-        }
         #endregion
-
-
 
         #endregion
     }

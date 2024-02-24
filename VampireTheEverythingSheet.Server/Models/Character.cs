@@ -60,7 +60,7 @@ namespace VampireTheEverythingSheet.Server.Models
             {
                 return;
             }
-            _traits[traitID] = new Trait(this, TraitTemplate.AllTraitTemplates[traitID]);
+            _traits[traitID] = new Trait(this, TraitInfo.AllTraitInfo[traitID]);
         }
 
         public void RemoveTrait(int traitID)
@@ -226,7 +226,7 @@ namespace VampireTheEverythingSheet.Server.Models
         {
             int count = 0;
 
-            if(!_subTraitRegistry.TryGetValue(mainTrait, out var subTraits))
+            if(!_subTraitRegistry.TryGetValue(mainTrait, out HashSet<int>? subTraits))
             {
                 throw new ArgumentException("Unrecognized main trait " + mainTrait + " in CountSubTraits.");
             }

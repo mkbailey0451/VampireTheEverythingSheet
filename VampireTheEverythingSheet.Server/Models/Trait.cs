@@ -33,7 +33,7 @@ namespace VampireTheEverythingSheet.Server.Models
         /// <summary>
         /// Creates a Trait belonging to the supplied Character based on the supplied TraitTemplate.
         /// </summary>
-        public Trait(Character character, TraitTemplate template)
+        public Trait(Character character, TraitInfo template)
         {
             //there are a lot of possible exceptions here, but the correct thing to do in this case is throw them anyway
             Character = character;
